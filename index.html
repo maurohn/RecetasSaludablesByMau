@@ -285,8 +285,9 @@
   }
 
   .tag-green { background: #e8f5ea; color: var(--sage-dark); }
-  .tag-orange { background: #fdf0e8; color: var(--terracotta); }
+  .tag-yellow, .tag-orange { background: #fff6d6; color: #a27d00; }
   .tag-blue { background: #e8f0fd; color: #3b5ec7; }
+  .tag-pink { background: #f8d7e0; color: #9f2f55; }
 
   .card-desc {
     font-size: 13px;
@@ -3076,7 +3077,20 @@ const tipsData = [
 // Build cards
 function buildCards(containerId, data, mealLabel) {
   const cont = document.getElementById(containerId);
-  data.forEach((r, i) => {
+
+  const priority = (r) => {
+    const kcalVal = parseInt(r.kcal, 10) || 0;
+    const carbVal = parseInt(r.carb, 10) || 0;
+    const lowGlucose = r.tags.some(t => ['Bajo IG', 'Bajo carb', 'Sin azúcar'].includes(t)) || carbVal <= 25;
+    const moderate = r.tags.some(t => ['Ligera', 'Refrescante', 'Saludable', 'Proteína', 'Nutritiva', 'Vegetariana', 'Vegano', 'Sin gluten', 'Anti-inflamatorio'].includes(t)) || kcalVal <= 280;
+    if (lowGlucose) return 0;
+    if (moderate) return 1;
+    return 2;
+  };
+
+  const sortedData = [...data].sort((a, b) => priority(a) - priority(b));
+
+  sortedData.forEach((r, i) => {
     const tags = [...new Set(r.tags)];
     const kcalVal = parseInt(r.kcal, 10) || 0;
     const carbVal = parseInt(r.carb, 10) || 0;
@@ -3087,10 +3101,17 @@ function buildCards(containerId, data, mealLabel) {
     if (r.tags.includes('Bajo calorías') || r.tags.includes('Sin azúcar') || r.tags.includes('Refrescante') || kcalVal <= 280) {
       if (!tags.includes('Ligera')) tags.push('Ligera');
     }
+    if (kcalVal >= 330 && !tags.includes('Baja glucosa') && !tags.includes('Ligera')) {
+      if (!tags.includes('Engorda')) tags.push('Engorda');
+    }
 
-    const tagColors = ['tag-green','tag-orange','tag-blue'];
-    const tagsHtml = tags.map((t,j) => {
-      const className = t === 'Baja glucosa' ? 'tag-green' : t === 'Ligera' ? 'tag-blue' : tagColors[j % 3];
+    const tagColors = ['tag-green', 'tag-yellow', 'tag-blue', 'tag-pink'];
+    const tagsHtml = tags.map((t, j) => {
+      let className = 'tag';
+      if (t === 'Baja glucosa' || ['Bajo IG', 'Bajo carb', 'Sin azúcar'].includes(t)) className = 'tag-green';
+      else if (t === 'Ligera' || ['Refrescante', 'Saludable', 'Proteína', 'Nutritiva', 'Vegetariana', 'Vegano', 'Sin gluten', 'Anti-inflamatorio'].includes(t)) className = 'tag-yellow';
+      else if (t === 'Engorda') className = 'tag-pink';
+      else className = tagColors[j % tagColors.length];
       return `<span class="tag ${className}">${t}</span>`;
     }).join('');
 
