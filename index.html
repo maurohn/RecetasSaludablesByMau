@@ -591,7 +591,7 @@
   <h1>Recetario <em>Saludable</em><br>& Control de Glucosa</h1>
   <p>Recetas deliciosas, nutritivas y diseñadas para mantener estable el azúcar en sangre y cuidar tu peso.</p>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-num">21</div><div class="stat-label">Recetas</div></div>
+    <div class="stat"><div class="stat-num">53</div><div class="stat-label">Recetas</div></div>
     <div class="stat"><div class="stat-num">7</div><div class="stat-label">Días de plan</div></div>
     <div class="stat"><div class="stat-num">IG</div><div class="stat-label">Bajo índice glucémico</div></div>
     <div class="stat"><div class="stat-num">🥗</div><div class="stat-label">Anti-inflamatorio</div></div>
@@ -773,6 +773,111 @@ const recipes = {
       ],
       tip: "🍏 La pectina de la manzana verde (con cáscara) forma un gel en el intestino que frena la absorción de azúcares. Elegí siempre manzana verde, tiene menos fructosa que la roja."
     },
+    {
+      name: "Smoothie Verde de Espinaca y Plátano",
+      emoji: "🥬",
+      tags: ["Fibra alta", "Vitamina C", "Energizante"],
+      desc: "Batido verde con espinaca, plátano, yogur y semillas. Rápido, nutritivo y estabilizador.",
+      kcal: "280", prot: "15g", carb: "35g", grasa: "6g",
+      ing: ["1 taza espinaca fresca","½ plátano maduro","100g yogur griego","1 cda semillas de chía","1 taza leche de almendras","Hielo opcional","Jengibre rallado"],
+      steps: [
+        "Lavar bien la espinaca.",
+        "Colocar todos los ingredientes en la licuadora.",
+        "Procesar hasta obtener una mezcla homogénea.",
+        "Servir inmediatamente en un vaso alto.",
+      ],
+      tip: "🥬 La espinaca aporta hierro y vitamina K. Combinada con el plátano, mantiene estable la glucosa por horas."
+    },
+    {
+      name: "Tostadas de Aguacate con Huevo",
+      emoji: "🥑",
+      tags: ["Grasas saludables", "Proteína", "Sin gluten"],
+      desc: "Pan integral con aguacate maduro y huevo pochado. Cremoso y saciante.",
+      kcal: "350", prot: "14g", carb: "30g", grasa: "18g",
+      ing: ["2 rebanadas pan integral","1 aguacate maduro","1 huevo","Sal y pimienta","Limón","Semillas de sésamo"],
+      steps: [
+        "Tostar el pan integral.",
+        "Machacar el aguacate con limón, sal y pimienta.",
+        "Untar sobre el pan tostado.",
+        "Cocinar el huevo pochado o frito.",
+        "Colocar el huevo sobre el aguacate.",
+        "Espolvorear con semillas de sésamo.",
+      ],
+      tip: "🥑 El aguacate tiene grasas monoinsaturadas que mejoran la absorción de nutrientes y estabilizan la glucosa."
+    },
+    {
+      name: "Pudín de Chía con Coco",
+      emoji: "🥥",
+      tags: ["Omega-3", "Fibra", "Sin cocción"],
+      desc: "Semillas de chía remojadas en leche de coco con vainilla. Preparación overnight.",
+      kcal: "300", prot: "8g", carb: "25g", grasa: "18g",
+      ing: ["3 cdas semillas de chía","1 taza leche de coco","1 cdita extracto de vainilla","Frutas frescas","Canela"],
+      steps: [
+        "Mezclar las semillas de chía con la leche de coco y vainilla.",
+        "Refrigerar por lo menos 4 horas o toda la noche.",
+        "Remover antes de servir.",
+        "Cubrir con frutas frescas y canela.",
+      ],
+      tip: "🌰 Las semillas de chía absorben líquido y forman un gel que ralentiza la digestión de carbohidratos."
+    },
+    {
+      name: "Pancakes de Avena y Plátano",
+      emoji: "🥞",
+      tags: ["Sin harina refinada", "Fibra", "Natural"],
+      desc: "Tortitas hechas con avena molida y plátano. Dulces naturalmente.",
+      kcal: "320", prot: "10g", carb: "45g", grasa: "8g",
+      ing: ["1 taza avena molida","1 plátano maduro","1 huevo","1 cdita polvo de hornear","Leche de almendras","Canela"],
+      steps: [
+        "Machacar el plátano y mezclar con el huevo.",
+        "Agregar la avena molida, polvo de hornear y canela.",
+        "Incorporar leche hasta obtener consistencia de pancake.",
+        "Cocinar en sartén antiadherente.",
+        "Servir con frutas frescas.",
+      ],
+      tip: "🍌 El plátano aporta potasio y fibra. Usar avena integral mantiene bajo el IG."
+    },
+    {
+      name: "Batido de Proteínas con Frutas",
+      emoji: "🍓",
+      tags: ["Alto en proteínas", "Bajo IG", "Rápido"],
+      desc: "Batido con proteína en polvo, bayas y espinaca. Ideal post-entreno.",
+      kcal: "250", prot: "25g", carb: "20g", grasa: "5g",
+      ing: ["1 scoop proteína vegetal","½ taza frutillas","1 taza espinaca","1 taza leche de almendras","Hielo"],
+      steps: [
+        "Colocar todos los ingredientes en la licuadora.",
+        "Procesar hasta suave.",
+        "Servir frío.",
+      ],
+      tip: "💪 Las proteínas ayudan a mantener la saciedad y estabilizar la glucosa."
+    },
+    {
+      name: "Ensalada de Frutas con Yogur",
+      emoji: "🍉",
+      tags: ["Vitamina C", "Probiótico", "Refrescante"],
+      desc: "Mezcla de frutas de temporada con yogur griego.",
+      kcal: "220", prot: "12g", carb: "30g", grasa: "4g",
+      ing: ["200g yogur griego","1 taza frutas mixtas","1 cda miel de abeja","Nueces"],
+      steps: [
+        "Cortar las frutas en trozos.",
+        "Mezclar con yogur.",
+        "Agregar miel y nueces.",
+      ],
+      tip: "🍇 Las frutas enteras con fibra mantienen bajo el IG."
+    },
+    {
+      name: "Tortilla de Verduras",
+      emoji: "🥦",
+      tags: ["Vegetariana", "Bajo carb", "Nutritiva"],
+      desc: "Tortilla con verduras variadas y queso bajo en grasa.",
+      kcal: "280", prot: "18g", carb: "10g", grasa: "15g",
+      ing: ["3 huevos","1 taza verduras mixtas","50g queso","Aceite de oliva","Sal"],
+      steps: [
+        "Batir los huevos.",
+        "Agregar verduras picadas y queso.",
+        "Cocinar en sartén.",
+      ],
+      tip: "🥕 Las verduras aportan vitaminas y fibra sin aumentar la glucosa."
+    }
   ],
   almuerzos: [
     {
@@ -843,6 +948,89 @@ const recipes = {
       ],
       tip: "🐟 El salmón es la fuente más potente de omega-3 EPA/DHA, que mejoran la sensibilidad a la insulina y reducen la inflamación. Recomendado mínimo 2 veces por semana."
     },
+    {
+      name: "Ensalada de Atún con Aguacate",
+      emoji: "🥑",
+      tags: ["Omega-3", "Proteína", "Bajo IG"],
+      desc: "Atún en agua con aguacate, lechuga y aderezo de limón.",
+      kcal: "400", prot: "35g", carb: "15g", grasa: "22g",
+      ing: ["150g atún en agua","1 aguacate","Lechuga","Tomate","Limón","Aceite de oliva"],
+      steps: [
+        "Mezclar atún con aguacate machacado.",
+        "Agregar vegetales.",
+        "Condimentar con limón y aceite.",
+      ],
+      tip: "🐟 El atún aporta omega-3 y proteínas sin carbohidratos."
+    },
+    {
+      name: "Quinoa con Vegetales Asados",
+      emoji: "🌽",
+      tags: ["Completo", "Fibra", "Proteína vegetal"],
+      desc: "Quinoa cocida con vegetales asados al horno.",
+      kcal: "380", prot: "14g", carb: "50g", grasa: "12g",
+      ing: ["½ taza quinoa","Zucchini","Pimiento","Berenjena","Aceite de oliva","Especias"],
+      steps: [
+        "Cocinar quinoa.",
+        "Asar vegetales con aceite y especias.",
+        "Mezclar todo.",
+      ],
+      tip: "🌾 La quinoa es un pseudocereal con proteína completa."
+    },
+    {
+      name: "Pechuga de Pavo con Ensalada",
+      emoji: "🦃",
+      tags: ["Bajo en grasa", "Proteína magra", "Fibra"],
+      desc: "Pechuga de pavo a la plancha con ensalada mixta.",
+      kcal: "350", prot: "40g", carb: "20g", grasa: "10g",
+      ing: ["200g pechuga de pavo","Lechuga","Tomate","Pepino","Vinagreta ligera"],
+      steps: [
+        "Cocinar pavo a la plancha.",
+        "Preparar ensalada.",
+        "Servir juntos.",
+      ],
+      tip: "🦃 El pavo es una proteína magra ideal para control de peso."
+    },
+    {
+      name: "Sopa de Lentejas Rojas",
+      emoji: "🍲",
+      tags: ["Vegano", "Fibra alta", "Calórico"],
+      desc: "Sopa cremosa de lentejas rojas con verduras.",
+      kcal: "360", prot: "20g", carb: "55g", grasa: "5g",
+      ing: ["1 taza lentejas rojas","Zanahoria","Cebolla","Ajo","Caldo vegetal","Especias"],
+      steps: [
+        "Sofreír verduras.",
+        "Agregar lentejas y caldo.",
+        "Cocinar hasta suave.",
+      ],
+      tip: "🫘 Las lentejas aportan hierro y fibra."
+    },
+    {
+      name: "Ensalada de Garbanzos",
+      emoji: "🫘",
+      tags: ["Proteína vegetal", "Sin gluten", "Refrescante"],
+      desc: "Garbanzos con vegetales frescos y aderezo.",
+      kcal: "340", prot: "18g", carb: "45g", grasa: "10g",
+      ing: ["1 taza garbanzos","Tomate","Pepino","Cebolla","Limón","Aceite"],
+      steps: [
+        "Mezclar garbanzos con vegetales.",
+        "Condimentar.",
+      ],
+      tip: "🫘 Los garbanzos son ricos en fibra y proteína."
+    },
+    {
+      name: "Salmón al Horno con Brócoli",
+      emoji: "🐠",
+      tags: ["Omega-3", "Antioxidantes", "Bajo carb"],
+      desc: "Salmón horneado con brócoli al vapor.",
+      kcal: "420", prot: "38g", carb: "12g", grasa: "24g",
+      ing: ["150g salmón","1 taza brócoli","Limón","Aceite","Especias"],
+      steps: [
+        "Hornear salmón con limón y aceite.",
+        "Cocinar brócoli al vapor.",
+        "Servir juntos.",
+      ],
+      tip: "🐟 El salmón es excelente para la salud cardiovascular."
+    }
   ],
   cenas: [
     {
@@ -897,6 +1085,98 @@ const recipes = {
       ],
       tip: "🌊 Cocinar al vapor preserva hasta el 90% de los nutrientes vs. hervido. Es la técnica más recomendada para quienes cuidan la glucosa y el peso."
     },
+    {
+      name: "Ensalada de Pollo a la Parrilla",
+      emoji: "🥗",
+      tags: ["Proteína magra", "Bajo IG", "Refrescante"],
+      desc: "Pollo a la parrilla con ensalada de lechuga y vegetales.",
+      kcal: "320", prot: "35g", carb: "10g", grasa: "14g",
+      ing: ["150g pollo","Lechuga","Tomate","Pepino","Aderezo de yogur"],
+      steps: [
+        "Grillar pollo.",
+        "Mezclar con ensalada.",
+        "Condimentar.",
+      ],
+      tip: "🍗 El pollo aporta proteínas sin grasas saturadas."
+    },
+    {
+      name: "Verduras Asadas con Tofu",
+      emoji: "🥦",
+      tags: ["Vegano", "Bajo carb", "Antioxidantes"],
+      desc: "Tofu y vegetales asados al horno.",
+      kcal: "280", prot: "20g", carb: "20g", grasa: "12g",
+      ing: ["150g tofu","Brócoli","Zucchini","Aceite","Especias"],
+      steps: [
+        "Asar tofu y vegetales.",
+        "Condimentar.",
+      ],
+      tip: "🥦 Las verduras asadas retienen nutrientes."
+    },
+    {
+      name: "Sopa de Verduras Liviana",
+      emoji: "🥣",
+      tags: ["Muy baja caloría", "Hidratante", "Digestiva"],
+      desc: "Sopa clara de verduras frescas.",
+      kcal: "120", prot: "5g", carb: "20g", grasa: "3g",
+      ing: ["Caldo vegetal","Zanahoria","Apio","Cebolla","Hierbas"],
+      steps: [
+        "Cocinar verduras en caldo.",
+        "Hervir suavemente.",
+      ],
+      tip: "🥕 Ideal para digestión ligera por la noche."
+    },
+    {
+      name: "Pescado con Verduras Salteadas",
+      emoji: "🐟",
+      tags: ["Omega-3", "Fibra", "Equilibrado"],
+      desc: "Pescado blanco con verduras salteadas.",
+      kcal: "300", prot: "30g", carb: "15g", grasa: "10g",
+      ing: ["150g pescado","Espinaca","Tomate","Aceite de oliva"],
+      steps: [
+        "Saltear verduras.",
+        "Cocinar pescado.",
+        "Servir juntos.",
+      ],
+      tip: "🐟 Combinación perfecta de proteínas y vegetales."
+    },
+    {
+      name: "Yogur con Frutas y Nueces",
+      emoji: "🍯",
+      tags: ["Probiótico", "Grasas buenas", "Liviano"],
+      desc: "Yogur con frutas frescas y nueces.",
+      kcal: "250", prot: "15g", carb: "25g", grasa: "8g",
+      ing: ["150g yogur","Frutas","Nueces"],
+      steps: [
+        "Mezclar todo.",
+      ],
+      tip: "🍏 Dulzor natural sin azúcares añadidos."
+    },
+    {
+      name: "Tortilla de Verduras Mixtas",
+      emoji: "🍳",
+      tags: ["Vegetariana", "Bajo carb", "Nutritiva"],
+      desc: "Tortilla con variedad de verduras.",
+      kcal: "290", prot: "18g", carb: "12g", grasa: "16g",
+      ing: ["3 huevos","Pimiento","Cebolla","Espinaca"],
+      steps: [
+        "Batir huevos con verduras.",
+        "Cocinar en sartén.",
+      ],
+      tip: "🥕 Verduras aportan vitaminas esenciales."
+    },
+    {
+      name: "Té de Hierbas con Galletas Integrales",
+      emoji: "🍵",
+      tags: ["Relajante", "Bajo IG", "Sin azúcar"],
+      desc: "Té herbal con galletas de avena.",
+      kcal: "150", prot: "4g", carb: "20g", grasa: "5g",
+      ing: ["Té de manzanilla","2 galletas integrales"],
+      steps: [
+        "Preparar té.",
+        "Acompañar con galletas.",
+      ],
+      tip: "🍵 Ayuda a la relajación antes de dormir."
+    }
   ],
   snacks: [
     {
@@ -943,6 +1223,97 @@ const recipes = {
       ],
       tip: "💎 Las nueces tienen el mejor perfil de omega-3 entre los frutos secos. El magnesio de las almendras mejora la sensibilidad a la insulina. Nunca tostados con sal ni azucarados."
     },
+    {
+      name: "Yogur Griego con Arándanos",
+      emoji: "🫐",
+      tags: ["Probiótico", "Antioxidantes", "Proteína"],
+      desc: "Yogur natural con arándanos frescos.",
+      kcal: "200", prot: "15g", carb: "20g", grasa: "5g",
+      ing: ["150g yogur griego","½ taza arándanos","Canela"],
+      steps: [
+        "Mezclar yogur con arándanos.",
+        "Espolvorear canela.",
+      ],
+      tip: "🫐 Los arándanos son bajos en azúcar y ricos en antioxidantes."
+    },
+    {
+      name: "Palitos de Verdura con Hummus",
+      emoji: "🥒",
+      tags: ["Bajo IG", "Hidratante", "Fibra"],
+      desc: "Verduras crudas con hummus casero.",
+      kcal: "180", prot: "8g", carb: "22g", grasa: "8g",
+      ing: ["Zanahoria","Apio","Pepino","Hummus"],
+      steps: [
+        "Cortar verduras en palitos.",
+        "Servir con hummus.",
+      ],
+      tip: "🥕 Las verduras crudas mantienen todos los nutrientes."
+    },
+    {
+      name: "Frutos Secos y Semillas",
+      emoji: "🌰",
+      tags: ["Grasas saludables", "Energía", "Saciante"],
+      desc: "Mezcla de nueces y semillas sin procesar.",
+      kcal: "200", prot: "7g", carb: "8g", grasa: "16g",
+      ing: ["Nueces","Almendras","Semillas de chía","Semillas de lino"],
+      steps: [
+        "Mezclar en porción pequeña.",
+        "Consumir lentamente.",
+      ],
+      tip: "🌰 Proporcionan energía sostenida sin picos de glucosa."
+    },
+    {
+      name: "Manzana con Queso Cottage",
+      emoji: "🍎",
+      tags: ["Proteína", "Calcio", "Equilibrado"],
+      desc: "Manzana con queso bajo en grasa.",
+      kcal: "220", prot: "12g", carb: "25g", grasa: "6g",
+      ing: ["1 manzana","100g queso cottage","Canela"],
+      steps: [
+        "Cortar manzana.",
+        "Servir con queso.",
+        "Agregar canela.",
+      ],
+      tip: "🧀 El queso aporta calcio y proteína."
+    },
+    {
+      name: "Batido Verde Ligero",
+      emoji: "🥬",
+      tags: ["Vitamina C", "Hidratante", "Refrescante"],
+      desc: "Batido de espinaca y pepino.",
+      kcal: "80", prot: "3g", carb: "12g", grasa: "2g",
+      ing: ["Espinaca","Pepino","Limón","Agua"],
+      steps: [
+        "Licuar todos los ingredientes.",
+        "Servir frío.",
+      ],
+      tip: "🥬 Ideal para hidratarse sin calorías."
+    },
+    {
+      name: "Nueces y Frutas Secas",
+      emoji: "🥜",
+      tags: ["Fibra", "Grasas buenas", "Energizante"],
+      desc: "Nueces con pasas sin azúcar.",
+      kcal: "190", prot: "5g", carb: "15g", grasa: "12g",
+      ing: ["Nueces","Pasas naturales"],
+      steps: [
+        "Mezclar porciones pequeñas.",
+      ],
+      tip: "🍇 Las pasas naturales aportan potasio."
+    },
+    {
+      name: "Verduras Crudas con Guacamole",
+      emoji: "🥑",
+      tags: ["Grasas monoinsaturadas", "Fibra", "Saciante"],
+      desc: "Palitos de verduras con guacamole.",
+      kcal: "250", prot: "4g", carb: "20g", grasa: "18g",
+      ing: ["Aguacate","Limón","Zanahoria","Apio","Sal"],
+      steps: [
+        "Machacar aguacate con limón y sal.",
+        "Servir con verduras.",
+      ],
+      tip: "🥑 El aguacate es rico en grasas saludables."
+    }
   ]
 };
 
