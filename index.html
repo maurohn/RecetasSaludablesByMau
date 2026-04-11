@@ -589,12 +589,12 @@
 <div class="hero">
   <div class="hero-badge">🌿 Nutrición inteligente</div>
   <h1>Recetario <em>Saludable</em><br>& Control de Glucosa</h1>
-  <p>Recetas deliciosas, nutritivas y diseñadas para mantener estable el azúcar en sangre y cuidar tu peso.</p>
+  <p>🎯 <strong>REGLA CLAVE:</strong> Recetas deliciosas para mantener estable el azúcar en sangre, cuidar tu peso y vivir saludable. Sin complicaciones, solo ingredientes argentinos.</p>
   <div class="hero-stats">
     <div class="stat"><div class="stat-num">84</div><div class="stat-label">Recetas</div></div>
-    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Días de plan</div></div>
-    <div class="stat"><div class="stat-num">IG</div><div class="stat-label">Bajo índice glucémico</div></div>
-    <div class="stat"><div class="stat-num">🥗</div><div class="stat-label">Anti-inflamatorio</div></div>
+    <div class="stat"><div class="stat-num">Glucosa</div><div class="stat-label">Controlada</div></div>
+    <div class="stat"><div class="stat-num">Sano</div><div class="stat-label">Sin engordar</div></div>
+    <div class="stat"><div class="stat-num">🇦🇷</div><div class="stat-label">Argentino</div></div>
   </div>
 </div>
 
@@ -724,21 +724,281 @@
 const recipes = {
   desayunos: [
     {
-      name: "Bowl de Avena con Frutos Rojos",
-      emoji: "🫐",
-      tags: ["IG bajo", "Fibra", "Antioxidantes"],
-      desc: "Avena cocida en leche vegetal con berries frescos y semillas de chía. Saciante y estabilizador de glucosa.",
-      kcal: "320", prot: "12g", carb: "42g", grasa: "8g",
-      ing: ["½ taza avena arrollada","1 taza leche de almendras","½ taza arándanos","½ taza frutillas","1 cda semillas de chía","1 cdita canela","1 cdita extracto de vainilla","Nueces opcionales"],
+      name: "Tostadas con Queso y Tomate",
+      emoji: "🍞",
+      tags: ["Rápido", "Argentino", "Bajo IG"],
+      desc: "Pan tostado con queso y tomate fresco.",
+      kcal: "280", prot: "12g", carb: "28g", grasa: "12g",
+      ing: ["2 rebanadas pan integral","1 tomate","50g queso","Sal y aceite"],
       steps: [
-        "Calentar la leche a fuego medio en una ollita pequeña.",
-        "Agregar la avena y cocinar revolviendo 5-7 minutos hasta espesar.",
-        "Incorporar la canela y vainilla, mezclar bien.",
-        "Volcar en un bowl y dejar enfriar 2 minutos.",
-        "Cubrir con los frutos rojos, las semillas de chía y las nueces.",
+        "Tostar el pan.",
+        "Rallar el queso sobre el pan caliente.",
+        "Agregar rodajas de tomate.",
+        "Salpimentar.",
       ],
-      tip: "🌟 La avena tiene beta-glucano, una fibra que ralentiza la absorción de glucosa. Nunca agregues azúcar; si necesitás dulzor usá canela extra o unas gotitas de stevia."
+      tip: "🍅 Simple y saciante para empezar el día."
     },
+    {
+      name: "Huevos Revueltos con Tostadas",
+      emoji: "🥚",
+      tags: ["Proteína", "Rápido", "Sin gluten"],
+      desc: "Huevos con pan integral tostado.",
+      kcal: "290", prot: "18g", carb: "22g", grasa: "14g",
+      ing: ["2 huevos","2 rebanadas pan integral","1 cda aceite","Sal"],
+      steps: [
+        "Tostar el pan.",
+        "Freír los huevos en aceite caliente.",
+        "Salpimentar.",
+        "Servir juntos.",
+      ],
+      tip: "🥚 Desayuno rápido y nutritivo."
+    },
+    {
+      name: "Yogur con Granola Casera",
+      emoji: "🥣",
+      tags: ["Probiótico", "Casero", "Bajo azúcar"],
+      desc: "Yogur natural con granola hecha en casa.",
+      kcal: "260", prot: "12g", carb: "30g", grasa: "8g",
+      ing: ["200g yogur natural","3 cdas granola casera","Miel opcional"],
+      steps: [
+        "Servir yogur en bowl.",
+        "Agregar granola.",
+        "Añadir miel si se desea.",
+      ],
+      tip: "🍯 Muy fácil de hacer."
+    },
+    {
+      name: "Medialunas y Té Matinal",
+      emoji: "☕",
+      tags: ["Argentino", "Desayuno clásico", "Rápido"],
+      desc: "Medialuna integral con té o café.",
+      kcal: "240", prot: "8g", carb: "32g", grasa: "8g",
+      ing: ["1 medialuna integral","1 taza té o café","Leche si gusta"],
+      steps: [
+        "Calentar la medialuna en el horno.",
+        "Preparar té o café.",
+        "Servir caliente.",
+      ],
+      tip: "☕ Clásico argentino, versión integral."
+    },
+    {
+      name: "Tostadas con Huevo Pochado",
+      emoji: "🍳",
+      tags: ["Proteína alta", "Simple", "Sustancioso"],
+      desc: "Pan tostado con huevo pochado y sal.",
+      kcal: "270", prot: "14g", carb: "24g", grasa: "11g",
+      ing: ["2 rebanadas pan integral","1 huevo","Sal y pimienta"],
+      steps: [
+        "Tostar el pan.",
+        "Hervir agua con vinagre.",
+        "Cocer huevo pochado 3 minutos.",
+        "Colocar sobre el pan.",
+      ],
+      tip: "🥚 Proteína pura sin complicaciones."
+    },
+    {
+      name: "Licuado de Banana y Leche",
+      emoji: "🥤",
+      tags: ["Rápido", "Natural", "Energía"],
+      desc: "Batido simple de banana con leche.",
+      kcal: "220", prot: "8g", carb: "35g", grasa: "4g",
+      ing: ["1 banana","1 taza leche","Canela opcional"],
+      steps: [
+        "Cortar banana.",
+        "Licuar con leche.",
+        "Servir frío.",
+      ],
+      tip: "🍌 Energía natural para la mañana."
+    },
+    {
+      name: "Pan Integral con Queso y Jamón",
+      emoji: "🥪",
+      tags: ["Proteína", "Rápido", "Argentino"],
+      desc: "Sándwich argentino saludable.",
+      kcal: "310", prot: "16g", carb: "26g", grasa: "14g",
+      ing: ["2 rebanadas pan integral","50g jamón cocido","50g queso","Tomate"],
+      steps: [
+        "Armar sándwich.",
+        "Agregar tomate en rodajas.",
+        "Servir.",
+      ],
+      tip: "🥪 El clásico argentino simplificado."
+    },
+    {
+      name: "Avena Cocida con Pasas",
+      emoji: "🥣",
+      tags: ["Fibra", "Calórico", "Simple"],
+      desc: "Avena cocida con pasas y canela.",
+      kcal: "280", prot: "8g", carb: "45g", grasa: "6g",
+      ing: ["½ taza avena","1 taza leche","1 cdta pasas","Canela"],
+      steps: [
+        "Calentar la leche.",
+        "Agregar avena.",
+        "Cocinar 5 minutos.",
+        "Añadir pasas y canela.",
+      ],
+      tip: "🥣 Clásico y nutritivo."
+    },
+    {
+      name: "Desayuno de Queso y Pan",
+      emoji: "🧀",
+      tags: ["Calcio", "Simple", "Proteína"],
+      desc: "Pan con queso fresco laminado.",
+      kcal: "250", prot: "14g", carb: "22g", grasa: "10g",
+      ing: ["2 rebanadas pan","100g queso fresco","Sal"],
+      steps: [
+        "Tostar el pan.",
+        "Colocar queso laminado.",
+        "Salpimentar.",
+      ],
+      tip: "🧀 Rápido y saciante."
+    },
+    {
+      name: "Desayuno con Frutas y Yogur",
+      emoji: "🍎",
+      tags: ["Vitaminas", "Natural", "Ligero"],
+      desc: "Frutas frescas con yogur natural.",
+      kcal: "220", prot: "10g", carb: "32g", grasa: "3g",
+      ing: ["150g yogur natural","1 manzana","1 naranja"],
+      steps: [
+        "Cortar frutas.",
+        "Mezclar con yogur.",
+        "Servir.",
+      ],
+      tip: "🍎 Fresco y natural."
+    },
+    {
+      name: "Tostadas con Palta",
+      emoji: "🥑",
+      tags: ["Grasas buenas", "Simple", "Saciante"],
+      desc: "Pan tostado con palta machacada.",
+      kcal: "290", prot: "10g", carb: "26g", grasa: "15g",
+      ing: ["2 rebanadas pan integral","1 palta","Limón y sal"],
+      steps: [
+        "Tostar el pan.",
+        "Machacar la palta con limón y sal.",
+        "Untar en el pan.",
+      ],
+      tip: "🥑 Muy popular en Argentina."
+    },
+    {
+      name: "Pan Tostado con Tomate y Ajo",
+      emoji: "🍅",
+      tags: ["Rápido", "Clásico", "Bajo carb"],
+      desc: "Pan tostado con ajo y tomate fresco.",
+      kcal: "200", prot: "8g", carb: "24g", grasa: "6g",
+      ing: ["2 rebanadas pan integral","1 tomate","1 diente ajo","Aceite"],
+      steps: [
+        "Tostar el pan.",
+        "Frotar con ajo.",
+        "Poner tomate fresco.",
+        "Gotitas de aceite.",
+      ],
+      tip: "🍅 Pan con tomate, receta argentina clásica."
+    },
+    {
+      name: "Café con Tostadas y Mermelada",
+      emoji: "☕",
+      tags: ["Desayuno clásico", "Argentino", "Rápido"],
+      desc: "Café con tostadas y mermelada dietética.",
+      kcal: "240", prot: "6g", carb: "32g", grasa: "7g",
+      ing: ["2 rebanadas pan","1 taza café","1 cda mermelada diet","Leche"],
+      steps: [
+        "Tostar el pan.",
+        "Preparar café.",
+        "Untar mermelada.",
+        "Servir caliente.",
+      ],
+      tip: "☕ Clásico del desayuno argentino."
+    },
+    {
+      name: "Huevos Fritos con Pan",
+      emoji: "🍳",
+      tags: ["Proteína pura", "Simple", "Rápido"],
+      desc: "Huevos fritos con pan tostado.",
+      kcal: "270", prot: "16g", carb: "22g", grasa: "12g",
+      ing: ["2 huevos","2 rebanadas pan","1 cda aceite","Sal"],
+      steps: [
+        "Tostar el pan.",
+        "Freír los huevos.",
+        "Salpimentar.",
+        "Servir juntos.",
+      ],
+      tip: "🍳 Proteína y saciedad para toda la mañana."
+    },
+    {
+      name: "Té con Tostadas y Queso",
+      emoji: "🫖",
+      tags: ["Relajante", "Argentino", "Mañana"],
+      desc: "Té matinal con tostadas y queso.",
+      kcal: "230", prot: "10g", carb: "26g", grasa: "8g",
+      ing: ["1 taza té","2 rebanadas pan","50g queso"],
+      steps: [
+        "Preparar té caliente.",
+        "Tostar el pan.",
+        "Colocar queso.",
+        "Servir.",
+      ],
+      tip: "🫖 Desayuno tranquilo, muy argentino."
+    },
+    {
+      name: "Jugo de Naranja y Pan",
+      emoji: "🍊",
+      tags: ["Vitamina C", "Fresco", "Natural"],
+      desc: "Jugo natural de naranja con pan integral.",
+      kcal: "220", prot: "6g", carb: "35g", grasa: "5g",
+      ing: ["2 naranjas","2 rebanadas pan integral","Queso opcional"],
+      steps: [
+        "Exprimir las naranjas.",
+        "Tostar el pan.",
+        "Servir juntos.",
+      ],
+      tip: "🍊 Vitamina C natural sin aditivos."
+    },
+    {
+      name: "Desayuno Proteico Simple",
+      emoji: "🥓",
+      tags: ["Proteína alta", "Saciante", "Rápido"],
+      desc: "Huevo frito con jamón y pan.",
+      kcal: "300", prot: "18g", carb: "20g", grasa: "14g",
+      ing: ["2 huevos","50g jamón","2 rebanadas pan","Aceite"],
+      steps: [
+        "Freír el jamón ligero.",
+        "Freír los huevos.",
+        "Tostar el pan.",
+        "Servir caliente.",
+      ],
+      tip: "🥓 Desayuno contundente y argentino."
+    },
+    {
+      name: "Mix de Frutas con Leche",
+      emoji: "🍌",
+      tags: ["Natural", "Refrescante", "Vitaminas"],
+      desc: "Frutas variadas con leche fría.",
+      kcal: "200", prot: "8g", carb: "32g", grasa: "3g",
+      ing: ["1 banana","1 naranja","1 manzana","1 taza leche"],
+      steps: [
+        "Cortar frutas.",
+        "Mezclar con leche.",
+        "Servir frío.",
+      ],
+      tip: "🍌 Muy fresco y saludable."
+    },
+    {
+      name: "Tostadas Integrales Crujientes",
+      emoji: "🍞",
+      tags: ["Fibra", "Simple", "Versatil"],
+      desc: "Pan integral tostado con mantequilla light.",
+      kcal: "210", prot: "7g", carb: "28g", grasa: "6g",
+      ing: ["3 rebanadas pan integral","1 cda mantequilla light","Sal"],
+      steps: [
+        "Tostar bien el pan.",
+        "Untar mantequilla light.",
+        "Servir crujiente.",
+      ],
+      tip: "🍞 Base para cualquier cosa que quieras."
+    }
+  ],
     {
       name: "Huevos Revueltos con Espinaca",
       emoji: "🥚",
@@ -991,22 +1251,301 @@ const recipes = {
   ],
   almuerzos: [
     {
-      name: "Ensalada de Lentejas Mediterránea",
-      emoji: "🫘",
-      tags: ["Proteína vegetal", "Fibra alta", "IG bajo"],
-      desc: "Lentejas cocidas con tomate, pepino, aceitunas y aderezo de limón. Rico en fibra y proteínas vegetales.",
-      kcal: "380", prot: "22g", carb: "48g", grasa: "9g",
-      ing: ["1 taza lentejas cocidas","1 tomate en cubos","½ pepino en rodajas","¼ cebolla morada fina","10 aceitunas negras","2 cdas aceite de oliva","Jugo de 1 limón","Perejil fresco","Sal, pimienta y orégano"],
+      name: "Milanesa de Pollo con Ensalada",
+      emoji: "🍗",
+      tags: ["Argentino", "Proteína", "Clásico"],
+      desc: "Milanesa de pollo frita con ensalada fresca.",
+      kcal: "380", prot: "35g", carb: "18g", grasa: "16g",
+      ing: ["200g pechuga de pollo","Pan rallado","1 huevo","Lechuga","Tomate","Aceite"],
       steps: [
-        "Cocinar las lentejas con agua, sal y una hoja de laurel (o usar enlatadas enjuagadas).",
-        "Dejar enfriar completamente.",
-        "Cortar todos los vegetales y mezclar con las lentejas.",
-        "Preparar aderezo con aceite de oliva, limón, sal y orégano.",
-        "Condimentar la ensalada y mezclar bien.",
-        "Refrigerar 15 minutos antes de servir.",
+        "Aplnar el pecho de pollo.",
+        "Pasar por huevo y pan rallado.",
+        "Freír en aceite caliente.",
+        "Hacer ensalada con lechuga y tomate.",
+        "Servir juntos.",
       ],
-      tip: "🫘 Las legumbres tienen un índice glucémico de solo 20-30, muy por debajo del arroz blanco (70). Su combinación de fibra y proteína hace que la glucosa suba muy lentamente."
+      tip: "🍗 La milanesa es la comida argentina por excelencia."
     },
+    {
+      name: "Bife con Papas al Horno",
+      emoji: "🥩",
+      tags: ["Proteína roja", "Argentino", "Contundente"],
+      desc: "Filete de carne con papas al horno.",
+      kcal: "420", prot: "40g", carb: "30g", grasa: "16g",
+      ing: ["200g filete","3 papas medianas","Aceite","Sal","Pimienta"],
+      steps: [
+        "Cocinar papas al horno 30 minutos.",
+        "Freír o asar el filete 3 minutos por lado.",
+        "Servir juntos.",
+      ],
+      tip: "🥩 Clásico argentino simple y sabroso."
+    },
+    {
+      name: "Pollo Guisado con Fideos",
+      emoji: "🍲",
+      tags: ["Casero", "Reconfortante", "Fácil"],
+      desc: "Pollo guisado en caldo con fideos integrales.",
+      kcal: "380", prot: "30g", carb: "40g", grasa: "10g",
+      ing: ["200g pecho de pollo","1 l caldo","100g fideos integrales","Cebolla","Ajo"],
+      steps: [
+        "Dorar el pollo en olla.",
+        "Agregar caldo y vegetales.",
+        "Cocinar 20 minutos.",
+        "Agregar fideos.",
+        "Cocinar 8 minutos más.",
+      ],
+      tip: "🍲 Comida casera argentina, muy fácil."
+    },
+    {
+      name: "Asado de la Abuela",
+      emoji: "🔥",
+      tags: ["Argentino", "Proteína", "Gourmet"],
+      desc: "Cortes de asado a la parrilla.",
+      kcal: "420", prot: "42g", carb: "0g", grasa: "26g",
+      ing: ["200g asado","Sal y pimienta","Chimichurri"],
+      steps: [
+        "Poner asado en parrilla caliente.",
+        "Cocinar 4-5 minutos por lado.",
+        "Servir con chimichurri fresco.",
+      ],
+      tip: "🔥 El asado es patrimonio argentino."
+    },
+    {
+      name: "Empanadas de Carne Caseras",
+      emoji: "🥟",
+      tags: ["Argentino", "Clásico", "Portable"],
+      desc: "Empanadas de carne hecha en casa.",
+      kcal: "340", prot: "16g", carb: "32g", grasa: "14g",
+      ing: ["Masa para empanadas","200g carne molida","Cebolla","Pasas","Huevo"],
+      steps: [
+        "Freír carne con cebolla.",
+        "Rellenar masa.",
+        "Cerrar bien.",
+        "Freír hasta dorar.",
+      ],
+      tip: "🥟 Las empanadas son argentinas. Se pueden hacer al horno."
+    },
+    {
+      name: "Ensalada de Atún con Papas",
+      emoji: "🥗",
+      tags: ["Proteína", "Rápido", "Ligero"],
+      desc: "Atún en lata con papas cocidas y tomate.",
+      kcal: "300", prot: "28g", carb: "25g", grasa: "8g",
+      ing: ["1 lata atún","2 papas cocidas","1 tomate","Lechuga","Aceite de oliva"],
+      steps: [
+        "Cocinar papas.",
+        "Mezclar con atún y tomate.",
+        "Servir sobre lechuga.",
+        "Rociar aceite.",
+      ],
+      tip: "🥗 Rápido, práctico y nutritivo."
+    },
+    {
+      name: "Fideos Integrales a la Bolognesa",
+      emoji: "🍝",
+      tags: ["Clásico", "Proteína", "Completo"],
+      desc: "Fideos integrales con salsa de carne casera.",
+      kcal: "380", prot: "24g", carb: "42g", grasa: "12g",
+      ing: ["100g fideos integrales","200g carne molida","1 lata tomate","Cebolla","Aceite"],
+      steps: [
+        "Dorar la carne con cebolla.",
+        "Agregar tomate y cocinar 10 minutos.",
+        "Cocinar los fideos.",
+        "Mezclar todo.",
+      ],
+      tip: "🍝 Versión saludable de un clásico."
+    },
+    {
+      name: "Pechuguita de Pollo Frita",
+      emoji: "🍗",
+      tags: ["Simple", "Proteína pura", "Rápido"],
+      desc: "Pechuga de pollo frita simpl e con vegetales cocidos.",
+      kcal: "320", prot: "38g", carb: "8g", grasa: "14g",
+      ing: ["200g pecho de pollo","1 cda aceite","Zucchini","Zanahoria","Sal"],
+      steps: [
+        "Freír el pollo en aceite.",
+        "Saltear zucchini y zanahoria.",
+        "Servir juntos.",
+      ],
+      tip: "🍗 Simple, proteína pura."
+    },
+    {
+      name: "Licuado de Tomate Con Queso",
+      emoji: "🍲",
+      tags: ["Vegetariano", "Ligero", "Rápido"],
+      desc: "Sopa cremosa de tomate con queso rallado.",
+      kcal: "280", prot: "14g", carb: "28g", grasa: "10g",
+      ing: ["1 l caldo de verduras","1 lata tomate","Queso rallado","Cebolla","Aceite"],
+      steps: [
+        "Hervir caldo y tomate.",
+        "Licuar bien.",
+        "Agregar queso rallado.",
+        "Servir caliente.",
+      ],
+      tip: "🍲 Argentino clásico de las abuela."
+    },
+    {
+      name: "Costillas de Pollo al Horno",
+      emoji: "🍗",
+      tags: ["Proteína", "Horno", "Sabroso"],
+      desc: "Costillas de pollo marinadas y horneadas.",
+      kcal: "360", prot: "36g", carb: "6g", grasa: "18g",
+      ing: ["300g costillas de pollo","Limón","Ajo","Aceite","Sal"],
+      steps: [
+        "Marinar costillas 20 minutos.",
+        "Hornear a 200°C por 30 minutos.",
+        "Servir caliente.",
+      ],
+      tip: "🍗 Más jugosas que la pechuga."
+    },
+    {
+      name: "Suprema de Pollo Rellena",
+      emoji: "🍗",
+      tags: ["Proteína", "Especial", "Fácil"],
+      desc: "Pechuga de pollo abierta y rellena con jamón y queso.",
+      kcal: "380", prot: "40g", carb: "8g", grasa: "18g",
+      ing: ["200g pecho de pollo","50g jamón","50g queso","Aceite","Sal"],
+      steps: [
+        "Abrir la pechuga.",
+        "Rellenar con jamón y queso.",
+        "Freír o al horno.",
+        "Servir caliente.",
+      ],
+      tip: "🍗 Fácil y muy sabrosa."
+    },
+    {
+      name: "Sopa de Verduras Casera",
+      emoji: "🥣",
+      tags: ["Vegetal", "Casero", "Reconfortante"],
+      desc: "Sopa con zanahoria, papa, apio y cebolla.",
+      kcal: "180", prot: "8g", carb: "32g", grasa: "4g",
+      ing: ["1 zanahoria","1 papa","1 tallo apio","1 cebolla","1 l caldo"],
+      steps: [
+        "Picar verduras.",
+        "Cocinar en caldo 20 minutos.",
+        "Salpimentar.",
+        "Servir caliente.",
+      ],
+      tip: "🥣 Sopa de abuela, muy fácil."
+    },
+    {
+      name: "Arroz Blanco con Pollo",
+      emoji: "🍚",
+      tags: ["Tradicional", "Completo", "Saciante"],
+      desc: "Arroz blanco con pollo guisado.",
+      kcal: "420", prot: "28g", carb: "48g", grasa: "10g",
+      ing: ["200g pollo","1 taza arroz","Caldo","Cebolla","Aceite"],
+      steps: [
+        "Dorar el pollo con cebolla.",
+        "Agregar arroz y caldo.",
+        "Cocinar 18 minutos.",
+        "Servir.",
+      ],
+      tip: "🍚 Clásico que todos amamos."
+    },
+    {
+      name: "Lentejas Guisadas con Verduras",
+      emoji: "🫘",
+      tags: ["Vegetal", "Proteína", "Económico"],
+      desc: "Lentejas cocidas con verduras caseras.",
+      kcal: "320", prot: "18g", carb: "45g", grasa: "6g",
+      ing: ["1 taza lentejas","Zanahoria","Cebolla","Ajo","Aceite"],
+      steps: [
+        "Cocinar lentejas 30 minutos.",
+        "Agregar verduras cocidas.",
+        "Cocinar 10 minutos más.",
+        "Sypimentar.",
+      ],
+      tip: "🫘 Proteína vegetal económica."
+    },
+    {
+      name: "Carne Guisada al Vino",
+      emoji: "🍷",
+      tags: ["Sauce rico", "Argentino", "Sabroso"],
+      desc: "Carne guisada lentamente en vino tinto.",
+      kcal: "380", prot: "34g", carb: "16g", grasa: "16g",
+      ing: ["200g carne de res","Vino tinto","Cebolla","Ajo","Zanahoria"],
+      steps: [
+        "Dorar la carne.",
+        "Agregar vino y vegetales.",
+        "Cocinar lentamente 45 minutos.",
+        "Servir en su propio jugo.",
+      ],
+      tip: "🍷 Almuerzo de domingo de abuela."
+    },
+    {
+      name: "Panceta Con Papas Paja",
+      emoji: "🥔",
+      tags: ["Proteína", "Contundente", "Argentino"],
+      desc: "Panceta frita con papas paja caseras.",
+      kcal: "400", prot: "24g", carb: "28g", grasa: "20g",
+      ing: ["100g panceta","2 papas medianas","Sal","Aceite"],
+      steps: [
+        "Freír panceta.",
+        "Freír papas cortadas fino.",
+        "Salpimentar.",
+        "Servir caliente.",
+      ],
+      tip: "🥔 Contundente y muy argentino."
+    },
+    {
+      name: "Pechuga Asada Simple",
+      emoji: "🍗",
+      tags: ["Proteína pura", "Sano", "Rápido"],
+      desc: "Pechuga a la parrilla sin complicaciones.",
+      kcal: "280", prot: "42g", carb: "0g", grasa: "10g",
+      ing: ["250g pecho de pollo","Sal","Limón","Aceite"],
+      steps: [
+        "Aur a la parrilla 6 minutos por lado.",
+        "Exprimir limón.",
+        "Servir caliente.",
+      ],
+      tip: "🍗 Proteína pura para dieta."
+    },
+    {
+      name: "Bifecito con Puré Casero",
+      emoji: "🥩",
+      tags: ["Proteína", "Confort", "Clásico"],
+      desc: "Bifecito tierno con puré de papa.",
+      kcal: "360", prot: "34g", carb: "32g", grasa: "10g",
+      ing: ["150g bif e","3 papas","Leche","Mantequilla","Sal"],
+      steps: [
+        "Cocer papas y hacer puré.",
+        "Freír el bife.",
+        "Servir juntos.",
+      ],
+      tip: "🥩 Confort food argentino."
+    },
+    {
+      name: "Pechuguita a la Manteca",
+      emoji: "🍗",
+      tags: ["Proteína", "Rico", "Mantecoso"],
+      desc: "Pechuga en salsa de manteca y ajetes.",
+      kcal: "340", prot: "36g", carb: "6g", grasa: "16g",
+      ing: ["200g pecho de pollo","2 cdas manteca","Ajo","Perejil","Vino blanco"],
+      steps: [
+        "Freír pollo.",
+        "Hacer salsa con manteca, ajo y vino.",
+        "Mezclar.",
+        "Servir.",
+      ],
+      tip: "🍗 Clásico argentino jugoso."
+    },
+    {
+      name: "Chorizo a la Parrilla",
+      emoji: "🌭",
+      tags: ["Argentino", "BBQ", "Sencillo"],
+      desc: "Chorizo a la parrilla con pan.",
+      kcal: "380", prot: "18g", carb: "20g", grasa: "26g",
+      ing: ["150g chorizo","2 pan integral","Chimichurri"],
+      steps: [
+        "Asar chorizo a la parrilla.",
+        "Colocar en pan.",
+        "Agregar chimichurri.",
+      ],
+      tip: "🌭 El clásico argentino del asado."
+    }
+  ],
     {
       name: "Pollo al Horno con Vegetales",
       emoji: "🍗",
@@ -1277,22 +1816,282 @@ const recipes = {
   ],
   cenas: [
     {
-      name: "Tortilla de Espinaca y Ricota",
-      emoji: "🍳",
-      tags: ["Liviana", "Calcio", "Sin gluten"],
-      desc: "Tortilla al horno baja en carbos con espinaca, ricota descremada y hierbas frescas.",
-      kcal: "310", prot: "24g", carb: "8g", grasa: "20g",
-      ing: ["3 huevos","100g ricota descremada","1 taza espinaca cocida","¼ cebolla picada fina","Sal, pimienta y nuez moscada","1 cdita aceite de oliva","Tomillo fresco"],
+      name: "Tostadas con Queso Derretido",
+      emoji: "🧀",
+      tags: ["Simple", "Rápido", "Liviano"],
+      desc: "Pan tostado con queso derretido.",
+      kcal: "240", prot: "12g", carb: "24g", grasa: "10g",
+      ing: ["2 rebanadas pan","50g queso","Sal"],
       steps: [
-        "Escurrir bien la espinaca cocida y picarla.",
-        "Batir los huevos con sal, pimienta y nuez moscada.",
-        "Mezclar con la ricota, espinaca y cebolla.",
-        "Volcar en sartén antiadherente con aceite.",
-        "Cocinar a fuego bajo con tapa 8 minutos.",
-        "Gratinar en el horno 5 minutos (opcional).",
+        "Tostar el pan.",
+        "Poner queso en el horno.",
+        "Dejar que derrita.",
       ],
-      tip: "🌙 Las cenas sin almidones ayudan a que la glucosa de ayuno del día siguiente sea más baja. Los huevos + ricota dan proteínas sin picos glucémicos."
+      tip: "🧀 Rápido para la noche."
     },
+    {
+      name: "Sopa de Fideos Casera",
+      emoji: "🥣",
+      tags: ["Ligero", "Calientes", "Reconfortante"],
+      desc: "Sopa con caldo y fideos finos.",
+      kcal: "220", prot: "8g", carb: "32g", grasa: "5g",
+      ing: ["1 l caldo","50g fideos finos","Cebolla","Sal"],
+      steps: [
+        "Hervir el caldo.",
+        "Agregar fideos.",
+        "Cocinar 6 minutos.",
+        "Servir caliente.",
+      ],
+      tip: "🥣 Liviano para dormir bien."
+    },
+    {
+      name: "Pescado a la Sartén",
+      emoji: "🐟",
+      tags: ["Proteína", "Rápido", "Sano"],
+      desc: "Filete de merluza frito con limón.",
+      kcal: "260", prot: "32g", carb: "4g", grasa: "12g",
+      ing: ["200g filete de merluza","Limón","Aceite","Sal"],
+      steps: [
+        "Freír el pescado 3 minutos por lado.",
+        "Exprimir limón.",
+        "Servir caliente.",
+      ],
+      tip: "🐟 Ligero y nutritivo."
+    },
+    {
+      name: "Omelette de Queso",
+      emoji: "🍳",
+      tags: ["Proteína", "Rápido", "Cena clásica"],
+      desc: "Tortilla de huevos con queso.",
+      kcal: "240", prot: "16g", carb: "2g", grasa: "16g",
+      ing: ["2 huevos","50g queso","Aceite","Sal"],
+      steps: [
+        "Batir huevos con sal.",
+        "Cocinar en sartén con aceite.",
+        "Agregar queso.",
+        "Doblar a la mitad.",
+      ],
+      tip: "🍳 Cena tradicional argentina."
+    },
+    {
+      name: "Sopa de Verduras con Huevo",
+      emoji: "🥣",
+      tags: ["Vegetariano", "Liviano", "Nutritivo"],
+      desc: "Sopa de caldo con verduras y huevo pochado.",
+      kcal: "200", prot: "10g", carb: "18g", grasa: "8g",
+      ing: ["1 l caldo","Zanahoria","Papa","Apio","1 huevo"],
+      steps: [
+        "Hervir caldo con vegetales picados.",
+        "Cocinar 15 minutos.",
+        "Agregar huevo pochado.",
+        "Servir caliente.",
+      ],
+      tip: "🥣 Proteína extra con el huevo."
+    },
+    {
+      name: "Pechuguita Estofada",
+      emoji: "🍗",
+      tags: ["Proteína", "Guisado", "Reconfortante"],
+      desc: "Pechuga de pollo estofada con vegetales.",
+      kcal: "280", prot: "32g", carb: "12g", grasa: "10g",
+      ing: ["150g pecho de pollo","Zanahoria","Papas","Cebolla","Caldo"],
+      steps: [
+        "Dorar el pollo.",
+        "Agregar vegetales y caldo.",
+        "Cocinar 20 minutos.",
+        "Servir en su jugo.",
+      ],
+      tip: "🍗 Liviano y sabroso."
+    },
+    {
+      name: "Té Tostadas y Queso",
+      emoji: "🫖",
+      tags: ["Clásico", "Argentino", "Relajante"],
+      desc: "Té caliente con tostadas y queso fresco.",
+      kcal: "280", prot: "12g", carb: "28g", grasa: "12g",
+      ing: ["1 taza té","2 rebanadas pan","100g queso fresco"],
+      steps: [
+        "Preparar té caliente.",
+        "Tostar el pan.",
+        "Servir con queso.",
+      ],
+      tip: "🫖 Cena de siesta argentina."
+    },
+    {
+      name: "Sopa de Pollo Simple",
+      emoji: "🍲",
+      tags: ["Clásico", "Proteína", "Completo"],
+      desc: "Caldo con pollo deshilachado y verduras.",
+      kcal: "240", prot: "24g", carb: "14g", grasa: "8g",
+      ing: ["200g pollo","1 l caldo","Zanahoria","Papa","Fideos finos"],
+      steps: [
+        "Hervir el pollo en caldo.",
+        "Agregar vegetales.",
+        "Cocinar 20 minutos.",
+        "Desmenuzar el pollo.",
+        "Servir caliente.",
+      ],
+      tip: "🍲 Receta de abuela argentina."
+    },
+    {
+      name: "Huevo Pochado con Tostadas",
+      emoji: "🥚",
+      tags: ["Proteína", "Simple", "Clásico"],
+      desc: "Huevo pochado sobre pan tostado.",
+      kcal: "240", prot: "14g", carb: "22g", grasa: "10g",
+      ing: ["1 huevo","2 rebanadas pan","Sal y vinagre"],
+      steps: [
+        "Tostar el pan.",
+        "Hervir agua con vinagre.",
+        "Cocer huevo pochado.",
+        "Servir sobre el pan.",
+      ],
+      tip: "🥚 Clásico cena ligera."
+    },
+    {
+      name: "Fideos Integrales Simples",
+      emoji: "🍝",
+      tags: ["Vegetal", "Ligero", "Rápido"],
+      desc: "Fideos integrales con manteca y queso.",
+      kcal: "320", prot: "12g", carb: "42g", grasa: "10g",
+      ing: ["100g fideos integrales","1 cda manteca","Queso rallado","Sal"],
+      steps: [
+        "Cocinar los fideos.",
+        "Mezclar con manteca.",
+        "Agregar queso.",
+        "Servir caliente.",
+      ],
+      tip: "🍝 Simple y saciante."
+    },
+    {
+      name: "Sopa de Brócoli y Queso",
+      emoji: "🥦",
+      tags: ["Vegetariano", "Cremoso", "Sabroso"],
+      desc: "Brócoli cocido con queso derretido.",
+      kcal: "260", prot: "14g", carb: "20g", grasa: "14g",
+      ing: ["1 taza brócoli","100g queso","1 l caldo","Crema opcional"],
+      steps: [
+        "Cocinar brócoli en caldo.",
+        "Agregar queso.",
+        "Licuar o dejar entero.",
+        "Servir caliente.",
+      ],
+      tip: "🥦 Sabroso y completo."
+    },
+    {
+      name: "Milanesa de Pescado",
+      emoji: "🐟",
+      tags: ["Proteína", "Liviano", "Sabroso"],
+      desc: "Filete de pescado panado y frito.",
+      kcal: "300", prot: "28g", carb: "16g", grasa: "12g",
+      ing: ["200g filete de pescado","Pan rallado","Huevo","Limón","Aceite"],
+      steps: [
+        "Pasar por huevo y pan rallado.",
+        "Freír en aceite caliente.",
+        "Exprimir limón.",
+        "Servir caliente.",
+      ],
+      tip: "🐟 Milanesa de pescado ligera."
+    },
+    {
+      name: "Fideos con Salsa de Tomate",
+      emoji: "🍝",
+      tags: ["Vegetal", "Clásico", "Fácil"],
+      desc: "Fideos con salsa de tomate casera.",
+      kcal: "280", prot: "8g", carb: "44g", grasa: "6g",
+      ing: ["100g fideos","1 lata tomate","Cebolla","Ajo","Aceite"],
+      steps: [
+        "Hacer salsa de tomate.",
+        "Cocinar fideos.",
+        "Mezclar con salsa.",
+        "Servir.",
+      ],
+      tip: "🍝 Clásico italiano argentino."
+    },
+    {
+      name: "Té con Budín Casero",
+      emoji: "☕",
+      tags: ["Argentino", "Postre", "Casero"],
+      desc: "Té caliente con budín portobello casero.",
+      kcal: "320", prot: "6g", carb: "48g", grasa: "10g",
+      ing: ["1 taza té","1 porción budín casero","Dulce de leche opcional"],
+      steps: [
+        "Preparar té.",
+        "Servir budín.",
+        "Acompañar juntos.",
+      ],
+      tip: "☕ Merienda-cena argentina clásica."
+    },
+    {
+      name: "Licuado de Plátano",
+      emoji: "🥤",
+      tags: ["Rápido", "Ligero", "Energía"],
+      desc: "Batido de plátano con leche.",
+      kcal: "200", prot: "8g", carb: "32g", grasa: "3g",
+      ing: ["1 plátano","1 taza leche","Miel opcional"],
+      steps: [
+        "Licuar plátano con leche.",
+        "Servir frío.",
+      ],
+      tip: "🥤 Cena muy ligera."
+    },
+    {
+      name: "Sopa de Maitakes y Huevo",
+      emoji: "🍄",
+      tags: ["Vegetal", "Ligero", "Nutritivo"],
+      desc: "Sopa de hongos frescos con huevo.",
+      kcal: "180", prot: "12g", carb: "14g", grasa: "6g",
+      ing: ["200g hongos","1 l caldo","1 huevo","Cebolla"],
+      steps: [
+        "Cocinar hongos en caldo.",
+        "Agregar huevo cuando hierve.",
+        "Servir caliente.",
+      ],
+      tip: "🍄 Ligero y muy argentino."
+    },
+    {
+      name: "Yogur con Granola",
+      emoji: "🥣",
+      tags: ["Probiótico", "Rápido", "Ligero"],
+      desc: "Yogur natural con granola casera.",
+      kcal: "240", prot: "10g", carb: "32g", grasa: "6g",
+      ing: ["200g yogur natural","3 cdas granola casera"],
+      steps: [
+        "Servir yogur.",
+        "Agregar granola.",
+        "Mezclar bien.",
+      ],
+      tip: "🥣 Probióticos para dormir bien."
+    },
+    {
+      name: "Empanada de Carne",
+      emoji: "🥟",
+      tags: ["Argentino", "Sabroso", "Completo"],
+      desc: "Empanada de carne casera.",
+      kcal: "340", prot: "14g", carb: "30g", grasa: "16g",
+      ing: ["1 empanada de carne hecha en casa"],
+      steps: [
+        "Tomar empanada del congelador.",
+        "Freír o hornear.",
+        "Servir caliente.",
+      ],
+      tip: "🥟 Empanada simple y sabrosa."
+    },
+    {
+      name: "Bizcocho Casero Ligero",
+      emoji: "🍰",
+      tags: ["Casero", "Postre", "Ligero"],
+      desc: "Bizcocho casero con té.",
+      kcal: "280", prot: "4g", carb: "40g", grasa: "10g",
+      ing: ["1 porción bizcocho casero ligero","1 taza té"],
+      steps: [
+        "Calentar bizcocho.",
+        "Preparar té.",
+        "Disfrutar juntos.",
+      ],
+      tip: "🍰 Casero y menos culpa."
+    }
+  ],
     {
       name: "Crema de Zucchini y Jengibre",
       emoji: "🥒",
@@ -1643,19 +2442,264 @@ const recipes = {
   ],
   snacks: [
     {
-      name: "Manzana Verde con Mantequilla de Almendras",
+      name: "Manzana Verde",
       emoji: "🍏",
-      tags: ["IG bajo", "Fibra", "Saciante"],
-      desc: "La combinación perfecta: fibra de la manzana + grasa buena de las almendras estabiliza la glucosa.",
-      kcal: "210", prot: "5g", carb: "25g", grasa: "11g",
-      ing: ["1 manzana verde mediana","1.5 cdas mantequilla de almendras sin azúcar","Canela opciona"],
+      tags: ["Natural", "Rápido", "Saciante"],
+      desc: "Una manzana verde fresca.",
+      kcal: "80", prot: "0g", carb: "21g", grasa: "0g",
+      ing: ["1 manzana verde"],
       steps: [
-        "Lavar la manzana y cortarla en gajos.",
-        "Servir con la mantequilla de almendras al costado.",
-        "Espolvorear canela si se desea.",
+        "Lavar la manzana.",
+        "Comer.",
       ],
-      tip: "⏰ Este snack es ideal entre almuerzo y cena. La grasa de las almendras enlentece la digestión del azúcar de la manzana, previniendo picos glucémicos."
+      tip: "🍏 Simple y saludable."
     },
+    {
+      name: "Puñado de Nueces",
+      emoji: "🥜",
+      tags: ["Proteína", "Energía", "Grasas buenas"],
+      desc: "Nueces sin sal.",
+      kcal: "180", prot: "4g", carb: "4g", grasa: "18g",
+      ing: ["30g nueces"],
+      steps: [
+        "Porcionar.",
+        "Comer.",
+      ],
+      tip: "🥜 Energía sostenida."
+    },
+    {
+      name: "Queso y Pan",
+      emoji: "🧀",
+      tags: ["Proteína", "Calcio", "Rápido"],
+      desc: "Pan integral con queso fresco.",
+      kcal: "240", prot: "12g", carb: "28g", grasa: "8g",
+      ing: ["1 rebanada pan integral","50g queso fresco"],
+      steps: [
+        "Cortar queso.",
+        "Acompañar con pan.",
+      ],
+      tip: "🧀 Merienda clásica."
+    },
+    {
+      name: "Yogur Natural",
+      emoji: "🥣",
+      tags: ["Probiótico", "Rápido", "Ligero"],
+      desc: "Yogur natural sin azúcar.",
+      kcal: "100", prot: "10g", carb: "6g", grasa: "3g",
+      ing: ["150g yogur natural"],
+      steps: [
+        "Servir en bowl.",
+        "Comer.",
+      ],
+      tip: "🥣 Probióticos naturales."
+    },
+    {
+      name: "Palitos de Zanahoria",
+      emoji: "🥕",
+      tags: ["Vegetal", "Crudo", "Bajo IG"],
+      desc: "Zanahoria cruda cortada en palitos.",
+      kcal: "40", prot: "1g", carb: "9g", grasa: "0g",
+      ing: ["1 zanahoria mediana"],
+      steps: [
+        "Pelar y cortar.",
+        "Comer crudo.",
+      ],
+      tip: "🥕 Crujiente y bajo en calorías."
+    },
+    {
+      name: "Almendras Tostadas",
+      emoji: "🥜",
+      tags: ["Proteína", "Calcio", "Energía"],
+      desc: "Almendras sin sal tostadas.",
+      kcal: "160", prot: "6g", carb: "6g", grasa: "14g",
+      ing: ["25g almendras tostadas"],
+      steps: [
+        "Tostar si no vienen listas.",
+        "Porcionar.",
+        "Comer.",
+      ],
+      tip: "🥜 Calcio natural."
+    },
+    {
+      name: "Cheddar con Manzana",
+      emoji: "🍎",
+      tags: ["Proteína", "Fruta", "Equilibrado"],
+      desc: "Queso cheddar con manzana roja.",
+      kcal: "220", prot: "12g", carb: "20g", grasa: "10g",
+      ing: ["50g queso cheddar","1 manzana roja"],
+      steps: [
+        "Cortar manzana.",
+        "Cortar queso.",
+        "Comer juntos.",
+      ],
+      tip: "🍎 Combinación clásica."
+    },
+    {
+      name: "Arepa Integral",
+      emoji: "🥞",
+      tags: ["Venezolano-Argentino", "Satifaciente", "Fácil"],
+      desc: "Arepa integral casera.",
+      kcal: "280", prot: "8g", carb: "35g", grasa: "10g",
+      ing: ["1 arepa integral hecha"],
+      steps: [
+        "Calentar la arepa.",
+        "Servir.",
+      ],
+      tip: "🥞 Muy popular en Argentina ahora."
+    },
+    {
+      name: "Palta Sin Pan",
+      emoji: "🥑",
+      tags: ["Grasas buenas", "Natural", "Fresco"],
+      desc: "Media palta machacada con limón.",
+      kcal: "160", prot: "2g", carb: "8g", grasa: "14g",
+      ing: ["½ palta","Limón","Sal"],
+      steps: [
+        "Cortar palta por la mitad.",
+        "Machacar con tenedor.",
+        "Exprimir limón.",
+        "Comer con cuchara.",
+      ],
+      tip: "🥑 El snack más argentino."
+    },
+    {
+      name: "Huevo Duro",
+      emoji: "🥚",
+      tags: ["Proteína pura", "Portable", "Rápido"],
+      desc: "Huevo cocido y pelado.",
+      kcal: "155", prot: "13g", carb: "1g", grasa: "11g",
+      ing: ["1 huevo"],
+      steps: [
+        "Hervir 10 minutos.",
+        "Enfriar en agua fría.",
+        "Pelar.",
+        "Comer.",
+      ],
+      tip: "🥚 Proteína portable."
+    },
+    {
+      name: "Galletita Integral",
+      emoji: "🍪",
+      tags: ["Integral", "Rápido", "Accesible"],
+      desc: "Galletita integral sin azúcar.",
+      kcal: "120", prot: "3g", carb: "16g", grasa: "5g",
+      ing: ["2 galletitas integrales"],
+      steps: [
+        "Abrir paquete.",
+        "Comer.",
+      ],
+      tip: "🍪 Accesible para cualquier momento."
+    },
+    {
+      name: "Avena con Pasas",
+      emoji: "🌾",
+      tags: ["Fibra", "Saciante", "Simple"],
+      desc: "Avena cocida en agua con pasas.",
+      kcal: "200", prot: "5g", carb: "35g", grasa: "3g",
+      ing: ["½ taza avena","1 cdta pasas","Agua"],
+      steps: [
+        "Hervir agua.",
+        "Agregar avena.",
+        "Cocinar 5 minutos.",
+        "Agregar pasas.",
+      ],
+      tip: "🌾 Saciante y rápido."
+    },
+    {
+      name: "Banana",
+      emoji: "🍌",
+      tags: ["Potasio", "Natural", "Energía"],
+      desc: "Una banana entera.",
+      kcal: "105", prot: "1g", carb: "27g", grasa: "0g",
+      ing: ["1 banana"],
+      steps: [
+        "Pelar.",
+        "Comer.",
+      ],
+      tip: "🍌 Energía para media tarde."
+    },
+    {
+      name: "Tomate y Sal",
+      emoji: "🍅",
+      tags: ["Vegetal", "Bajo calorías", "Refrescante"],
+      desc: "Tomate cortado con sal.",
+      kcal: "35", prot: "1g", carb: "7g", grasa: "0g",
+      ing: ["1 tomate","Sal"],
+      steps: [
+        "Cortar el tomate.",
+        "Agregar sal.",
+        "Comer.",
+      ],
+      tip: "🍅 Muy ligero y refrescante."
+    },
+    {
+      name: "Almohadas de Maíz",
+      emoji: "🥜",
+      tags: ["Argentino", "Popular", "Crujiente"],
+      desc: "Almohadas de maíz sin sal.",
+      kcal: "180", prot: "3g", carb: "20g", grasa: "9g",
+      ing: ["1 paquetito almohadas"],
+      steps: [
+        "Abrir.",
+        "Comer.",
+      ],
+      tip: "🥜 Snack argentino popular."
+    },
+    {
+      name: "Pepino Fresco",
+      emoji: "🥒",
+      tags: ["Agua", "Bajo IG", "Refrescante"],
+      desc: "Pepino fresco en rodajas.",
+      kcal: "45", prot: "1g", carb: "3g", grasa: "0g",
+      ing: ["½ pepino"],
+      steps: [
+        "Pelar.",
+        "Cortar en rodajas.",
+        "Comer.",
+      ],
+      tip: "🥒 99% agua, muy refrescante."
+    },
+    {
+      name: "Pan Tostado Simple",
+      emoji: "🍞",
+      tags: ["Integral", "Base", "Versátil"],
+      desc: "Pan integral tostado solo.",
+      kcal: "140", prot: "5g", carb: "24g", grasa: "2g",
+      ing: ["2 rebanadas pan integral"],
+      steps: [
+        "Tostar.",
+        "Comer crujiente.",
+      ],
+      tip: "🍞 Base para agregarle algo."
+    },
+    {
+      name: "Pasas de Uva",
+      emoji: "🍇",
+      tags: ["Dulce natural", "Portable", "Energía"],
+      desc: "Puñado de pasas sin azúcar añadida.",
+      kcal: "130", prot: "1g", carb: "34g", grasa: "0g",
+      ing: ["30g pasas"],
+      steps: [
+        "Porcionar.",
+        "Comer.",
+      ],
+      tip: "🍇 Dulce natural."
+    },
+    {
+      name: "Agua con Limón",
+      emoji: "💧",
+      tags: ["Hidratación", "Cero calorías", "Refrescante"],
+      desc: "Agua fresca con limón.",
+      kcal: "5", prot: "0g", carb: "1g", grasa: "0g",
+      ing: ["1 vaso agua","½ limón"],
+      steps: [
+        "Exprimir el limón.",
+        "Mezclar con agua.",
+        "Beber frío.",
+      ],
+      tip: "💧 Lo más saludable."
+    }
+  ]
     {
       name: "Hummus con Palitos de Verdura",
       emoji: "🥕",
