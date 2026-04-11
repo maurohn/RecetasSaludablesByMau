@@ -3077,8 +3077,23 @@ const tipsData = [
 function buildCards(containerId, data, mealLabel) {
   const cont = document.getElementById(containerId);
   data.forEach((r, i) => {
+    const tags = [...new Set(r.tags)];
+    const kcalVal = parseInt(r.kcal, 10) || 0;
+    const carbVal = parseInt(r.carb, 10) || 0;
+
+    if (r.tags.includes('Bajo IG') || r.tags.includes('Bajo carb') || r.tags.includes('Sin azúcar') || carbVal <= 25) {
+      if (!tags.includes('Baja glucosa')) tags.push('Baja glucosa');
+    }
+    if (r.tags.includes('Bajo calorías') || r.tags.includes('Sin azúcar') || r.tags.includes('Refrescante') || kcalVal <= 280) {
+      if (!tags.includes('Ligera')) tags.push('Ligera');
+    }
+
     const tagColors = ['tag-green','tag-orange','tag-blue'];
-    const tagsHtml = r.tags.map((t,j) => `<span class="tag ${tagColors[j%3]}">${t}</span>`).join('');
+    const tagsHtml = tags.map((t,j) => {
+      const className = t === 'Baja glucosa' ? 'tag-green' : t === 'Ligera' ? 'tag-blue' : tagColors[j % 3];
+      return `<span class="tag ${className}">${t}</span>`;
+    }).join('');
+
     cont.innerHTML += `
       <div class="recipe-card" onclick="openModal('${mealLabel}', ${JSON.stringify(r).replace(/'/g,"&#39;").replace(/"/g,'&quot;')})">
         <div class="card-header" data-emoji="${r.emoji}">
