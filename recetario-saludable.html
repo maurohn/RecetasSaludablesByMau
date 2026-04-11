@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recetario Saludable · Control Glucosa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sage: #6b8f71;
+    --sage-light: #a8c5ae;
+    --sage-dark: #3d5c42;
+    --cream: #f9f4ec;
+    --warm: #e8dcc8;
+    --terracotta: #c17a56;
+    --charcoal: #2c2c2c;
+    --text: #3a3530;
+    --muted: #7a7068;
+    --card-bg: #ffffff;
+    --border: rgba(107,143,113,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .hero {
+    background: var(--sage-dark);
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(168,197,174,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(193,122,86,0.12) 0%, transparent 50%);
+    color: white;
+    padding: 60px 40px 50px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -60px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50px;
+    padding: 6px 16px;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sage-light);
+  }
+
+  .hero p {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--sage-light);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  /* NAV */
+  .nav-container {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+  }
+
+  .nav-pills {
+    display: flex;
+    gap: 4px;
+    padding: 12px 20px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .nav-pills::-webkit-scrollbar { display: none; }
+
+  .pill {
+    flex-shrink: 0;
+    padding: 8px 18px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'DM Sans', sans-serif;
+    white-space: nowrap;
+  }
+
+  .pill:hover { border-color: var(--sage); color: var(--sage-dark); }
+
+  .pill.active {
+    background: var(--sage-dark);
+    border-color: var(--sage-dark);
+    color: white;
+  }
+
+  /* MAIN */
+  .main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* SECTION */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 30px;
+  }
+
+  .section-icon {
+    width: 48px; height: 48px;
+    border-radius: 14px;
+    background: var(--sage-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--sage-dark);
+  }
+
+  .section-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  /* RECIPE GRID */
+  .recipe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  .recipe-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .recipe-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(61,92,66,0.12);
+  }
+
+  .card-header {
+    background: linear-gradient(135deg, var(--sage-dark), var(--sage));
+    padding: 28px 22px 20px;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-header::after {
+    content: attr(data-emoji);
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 52px;
+    opacity: 0.25;
+  }
+
+  .card-meal {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--sage-light);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  .card-body {
+    padding: 18px 22px;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+
+  .tag {
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 500;
+  }
+
+  .tag-green { background: #e8f5ea; color: var(--sage-dark); }
+  .tag-orange { background: #fdf0e8; color: var(--terracotta); }
+  .tag-blue { background: #e8f0fd; color: #3b5ec7; }
+
+  .card-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+
+  .card-macros {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  .macro {
+    flex: 1;
+    text-align: center;
+  }
+
+  .macro:not(:last-child) {
+    border-right: 1px solid var(--border);
+  }
+
+  .macro-val {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--sage-dark);
+    display: block;
+  }
+
+  .macro-key {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,40,30,0.6);
+    z-index: 999;
+    padding: 20px;
+    overflow-y: auto;
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+  .modal {
+    background: white;
+    border-radius: 24px;
+    max-width: 640px;
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+    animation: slideUp 0.25s ease;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-hero {
+    background: linear-gradient(135deg, var(--sage-dark), var(--sage));
+    padding: 36px 32px 28px;
+    color: white;
+    position: relative;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .modal-meal { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--sage-light); margin-bottom: 8px; }
+  .modal-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; line-height: 1.2; }
+
+  .modal-body { padding: 28px 32px; }
+
+  .modal-section { margin-bottom: 26px; }
+
+  .modal-section-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--sage);
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .modal-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .ing-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .ing-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+
+  .ing-list li::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sage);
+    flex-shrink: 0;
+  }
+
+  .steps-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .step {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--sage-dark);
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .step-text { font-size: 14px; line-height: 1.6; color: var(--text); }
+
+  .tip-box {
+    background: #f0f7f1;
+    border: 1px solid var(--sage-light);
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: var(--sage-dark);
+    line-height: 1.6;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  /* GUIDE */
+  .guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .guide-card {
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .guide-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--sage-dark);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .guide-card ul { list-style: none; }
+
+  .guide-card ul li {
+    font-size: 13px;
+    color: var(--text);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .guide-card ul li:last-child { border-bottom: none; }
+
+  .badge-good { background: #e8f5ea; color: #2d6e35; font-size: 10px; padding: 2px 8px; border-radius: 50px; font-weight: 600; }
+  .badge-avoid { background: #fde8e8; color: #8b2020; font-size: 10px; padding: 2px 8px; border-radius: 50px; font-weight: 600; }
+  .badge-mod { background: #fef9e7; color: #7d6008; font-size: 10px; padding: 2px 8px; border-radius: 50px; font-weight: 600; }
+
+  /* PLAN */
+  .week-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 16px;
+  }
+
+  .day-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .day-header {
+    background: var(--sage-dark);
+    color: white;
+    padding: 14px 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .day-meals { padding: 14px 20px; }
+
+  .day-meal {
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .day-meal:last-child { border-bottom: none; }
+
+  .meal-time { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--sage); font-weight: 600; }
+  .meal-name { font-size: 13.5px; color: var(--text); }
+
+  /* TIPS */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .tip-card {
+    background: white;
+    border-radius: 18px;
+    padding: 24px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--sage);
+  }
+
+  .tip-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    color: var(--sage-dark);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .tip-card p { font-size: 13.5px; color: var(--muted); line-height: 1.65; }
+
+  /* Responsive */
+  @media (max-width: 580px) {
+    .hero { padding: 40px 20px 36px; }
+    .hero-stats { gap: 20px; }
+    .modal-body { padding: 20px; }
+    .ing-list { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">🌿 Nutrición inteligente</div>
+  <h1>Recetario <em>Saludable</em><br>& Control de Glucosa</h1>
+  <p>Recetas deliciosas, nutritivas y diseñadas para mantener estable el azúcar en sangre y cuidar tu peso.</p>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">21</div><div class="stat-label">Recetas</div></div>
+    <div class="stat"><div class="stat-num">7</div><div class="stat-label">Días de plan</div></div>
+    <div class="stat"><div class="stat-num">IG</div><div class="stat-label">Bajo índice glucémico</div></div>
+    <div class="stat"><div class="stat-num">🥗</div><div class="stat-label">Anti-inflamatorio</div></div>
+  </div>
+</div>
+
+<div class="nav-container">
+  <div class="nav-pills">
+    <button class="pill active" onclick="showSection('desayunos')">🌅 Desayunos</button>
+    <button class="pill" onclick="showSection('almuerzos')">☀️ Almuerzos</button>
+    <button class="pill" onclick="showSection('cenas')">🌙 Cenas</button>
+    <button class="pill" onclick="showSection('snacks')">🍎 Snacks</button>
+    <button class="pill" onclick="showSection('plan')">📅 Plan Semanal</button>
+    <button class="pill" onclick="showSection('guia')">📖 Guía de Alimentos</button>
+    <button class="pill" onclick="showSection('tips')">💡 Consejos</button>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- DESAYUNOS -->
+  <div class="section active" id="desayunos">
+    <div class="section-header">
+      <div class="section-icon">🌅</div>
+      <div>
+        <div class="section-title">Desayunos</div>
+        <div class="section-sub">Empezá el día con energía estable y sin picos de glucosa</div>
+      </div>
+    </div>
+    <div class="recipe-grid" id="grid-desayunos"></div>
+  </div>
+
+  <!-- ALMUERZOS -->
+  <div class="section" id="almuerzos">
+    <div class="section-header">
+      <div class="section-icon">☀️</div>
+      <div>
+        <div class="section-title">Almuerzos</div>
+        <div class="section-sub">Comidas completas y saciantes para el mediodía</div>
+      </div>
+    </div>
+    <div class="recipe-grid" id="grid-almuerzos"></div>
+  </div>
+
+  <!-- CENAS -->
+  <div class="section" id="cenas">
+    <div class="section-header">
+      <div class="section-icon">🌙</div>
+      <div>
+        <div class="section-title">Cenas</div>
+        <div class="section-sub">Livianas, digestivas y reparadoras para el descanso</div>
+      </div>
+    </div>
+    <div class="recipe-grid" id="grid-cenas"></div>
+  </div>
+
+  <!-- SNACKS -->
+  <div class="section" id="snacks">
+    <div class="section-header">
+      <div class="section-icon">🍎</div>
+      <div>
+        <div class="section-title">Snacks & Colaciones</div>
+        <div class="section-sub">Para mantener estable el azúcar entre comidas</div>
+      </div>
+    </div>
+    <div class="recipe-grid" id="grid-snacks"></div>
+  </div>
+
+  <!-- PLAN SEMANAL -->
+  <div class="section" id="plan">
+    <div class="section-header">
+      <div class="section-icon">📅</div>
+      <div>
+        <div class="section-title">Plan Semanal</div>
+        <div class="section-sub">7 días completos de alimentación saludable</div>
+      </div>
+    </div>
+    <div class="week-grid" id="week-grid"></div>
+  </div>
+
+  <!-- GUÍA -->
+  <div class="section" id="guia">
+    <div class="section-header">
+      <div class="section-icon">📖</div>
+      <div>
+        <div class="section-title">Guía de Alimentos</div>
+        <div class="section-sub">Qué comer, qué moderar y qué evitar para controlar la glucosa</div>
+      </div>
+    </div>
+    <div class="guide-grid" id="guide-grid"></div>
+  </div>
+
+  <!-- TIPS -->
+  <div class="section" id="tips">
+    <div class="section-header">
+      <div class="section-icon">💡</div>
+      <div>
+        <div class="section-title">Consejos Clave</div>
+        <div class="section-sub">Hábitos que marcan la diferencia en el control glucémico</div>
+      </div>
+    </div>
+    <div class="tips-grid" id="tips-grid"></div>
+  </div>
+
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hero">
+      <button class="modal-close" onclick="closeModalDirect()">✕</button>
+      <div class="modal-meal" id="m-meal"></div>
+      <div class="modal-title" id="m-title"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-section-title">Ingredientes</div>
+        <ul class="ing-list" id="m-ing"></ul>
+      </div>
+      <div class="modal-section">
+        <div class="modal-section-title">Preparación</div>
+        <ol class="steps-list" id="m-steps"></ol>
+      </div>
+      <div class="tip-box" id="m-tip"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const recipes = {
+  desayunos: [
+    {
+      name: "Bowl de Avena con Frutos Rojos",
+      emoji: "🫐",
+      tags: ["IG bajo", "Fibra", "Antioxidantes"],
+      desc: "Avena cocida en leche vegetal con berries frescos y semillas de chía. Saciante y estabilizador de glucosa.",
+      kcal: "320", prot: "12g", carb: "42g", grasa: "8g",
+      ing: ["½ taza avena arrollada","1 taza leche de almendras","½ taza arándanos","½ taza frutillas","1 cda semillas de chía","1 cdita canela","1 cdita extracto de vainilla","Nueces opcionales"],
+      steps: [
+        "Calentar la leche a fuego medio en una ollita pequeña.",
+        "Agregar la avena y cocinar revolviendo 5-7 minutos hasta espesar.",
+        "Incorporar la canela y vainilla, mezclar bien.",
+        "Volcar en un bowl y dejar enfriar 2 minutos.",
+        "Cubrir con los frutos rojos, las semillas de chía y las nueces.",
+      ],
+      tip: "🌟 La avena tiene beta-glucano, una fibra que ralentiza la absorción de glucosa. Nunca agregues azúcar; si necesitás dulzor usá canela extra o unas gotitas de stevia."
+    },
+    {
+      name: "Huevos Revueltos con Espinaca",
+      emoji: "🥚",
+      tags: ["Alto en proteínas", "Sin gluten", "IG muy bajo"],
+      desc: "Huevos cremosos salteados con espinaca fresca, ajo y un toque de aceite de oliva. Proteínas y grasas saludables.",
+      kcal: "290", prot: "20g", carb: "4g", grasa: "20g",
+      ing: ["3 huevos","1 puñado espinaca fresca","1 diente ajo picado","1 cda aceite de oliva","Sal y pimienta","Pizca de cúrcuma","1 cdita semillas de sésamo"],
+      steps: [
+        "Calentar aceite de oliva a fuego medio-bajo.",
+        "Saltear el ajo 1 minuto hasta dorar ligeramente.",
+        "Agregar la espinaca y cocinar 2 minutos hasta que se ablande.",
+        "Batir los huevos con sal, pimienta y cúrcuma.",
+        "Volcar los huevos y revolver suavemente con espátula de madera.",
+        "Retirar del fuego antes de que terminen de cuajar (quedan cremosos).",
+        "Espolvorear con sésamo y servir.",
+      ],
+      tip: "💪 Desayunar proteínas en lugar de carbohidratos simples reduce el pico de glucosa postprandial hasta un 40%. Podés acompañar con 1 rebanada de pan integral."
+    },
+    {
+      name: "Yogur Griego con Semillas y Manzana",
+      emoji: "🍎",
+      tags: ["Probiótico", "Fibra", "Proteína"],
+      desc: "Yogur griego natural (sin azúcar) con manzana verde, linaza y canela. Refrescante y digestivo.",
+      kcal: "260", prot: "18g", carb: "28g", grasa: "7g",
+      ing: ["200g yogur griego natural 0%","½ manzana verde en cubitos","1 cda semillas de lino molido","1 cdita canela","5-6 nueces","Stevia al gusto","Opcional: jengibre rallado"],
+      steps: [
+        "Colocar el yogur griego en un bowl.",
+        "Cortar la manzana verde en cubitos pequeños (no pelar).",
+        "Incorporar la manzana, las nueces y el lino molido.",
+        "Espolvorear canela y agregar stevia si se desea.",
+        "Mezclar suavemente y consumir inmediatamente.",
+      ],
+      tip: "🍏 La pectina de la manzana verde (con cáscara) forma un gel en el intestino que frena la absorción de azúcares. Elegí siempre manzana verde, tiene menos fructosa que la roja."
+    },
+  ],
+  almuerzos: [
+    {
+      name: "Ensalada de Lentejas Mediterránea",
+      emoji: "🫘",
+      tags: ["Proteína vegetal", "Fibra alta", "IG bajo"],
+      desc: "Lentejas cocidas con tomate, pepino, aceitunas y aderezo de limón. Rico en fibra y proteínas vegetales.",
+      kcal: "380", prot: "22g", carb: "48g", grasa: "9g",
+      ing: ["1 taza lentejas cocidas","1 tomate en cubos","½ pepino en rodajas","¼ cebolla morada fina","10 aceitunas negras","2 cdas aceite de oliva","Jugo de 1 limón","Perejil fresco","Sal, pimienta y orégano"],
+      steps: [
+        "Cocinar las lentejas con agua, sal y una hoja de laurel (o usar enlatadas enjuagadas).",
+        "Dejar enfriar completamente.",
+        "Cortar todos los vegetales y mezclar con las lentejas.",
+        "Preparar aderezo con aceite de oliva, limón, sal y orégano.",
+        "Condimentar la ensalada y mezclar bien.",
+        "Refrigerar 15 minutos antes de servir.",
+      ],
+      tip: "🫘 Las legumbres tienen un índice glucémico de solo 20-30, muy por debajo del arroz blanco (70). Su combinación de fibra y proteína hace que la glucosa suba muy lentamente."
+    },
+    {
+      name: "Pollo al Horno con Vegetales",
+      emoji: "🍗",
+      tags: ["Alto en proteínas", "Sin carbos", "Anti-inflamatorio"],
+      desc: "Pechuga de pollo marinada al horno con zucchini, pimiento y cebolla. Completo y sin hidratos.",
+      kcal: "410", prot: "42g", carb: "18g", grasa: "16g",
+      ing: ["200g pechuga de pollo","1 zucchini en rodajas","1 pimiento rojo","1 cebolla morada","3 cdas aceite de oliva","2 dientes ajo","1 cdita cúrcuma","Romero y tomillo","Sal y pimienta negra"],
+      steps: [
+        "Precalentar horno a 200°C.",
+        "Marinar el pollo con aceite, ajo picado, cúrcuma, sal y hierbas por 15 minutos.",
+        "Cortar los vegetales en trozos medianos.",
+        "Disponer todo en una fuente de horno.",
+        "Cocinar 35-40 minutos, girando el pollo a la mitad.",
+        "El pollo debe alcanzar temperatura interna de 75°C.",
+      ],
+      tip: "🌿 La cúrcuma tiene curcumina, un compuesto con propiedades anti-inflamatorias y estudios que muestran mejora en la sensibilidad a la insulina."
+    },
+    {
+      name: "Sopa de Verduras con Garbanzos",
+      emoji: "🥣",
+      tags: ["Vegano", "Fibra", "Saciante"],
+      desc: "Caldo concentrado con zanahorias, apio, kale y garbanzos. Calórico para el frío, nutritiva todo el año.",
+      kcal: "340", prot: "16g", carb: "52g", grasa: "6g",
+      ing: ["1 taza garbanzos cocidos","2 zanahorias en rodajas","2 tallos apio","1 taza kale picado","1 tomate triturado","1 l caldo de verduras","1 cebolla","2 dientes ajo","1 cdita comino","Sal, pimentón y laurel"],
+      steps: [
+        "Sofreír la cebolla y el ajo en una olla grande con un toque de aceite.",
+        "Agregar zanahoria y apio, cocinar 5 minutos.",
+        "Incorporar el tomate triturado y las especias, mezclar.",
+        "Agregar el caldo y llevar a hervor.",
+        "Cocinar 20 minutos a fuego bajo.",
+        "Añadir los garbanzos y el kale, cocinar 10 minutos más.",
+      ],
+      tip: "🥬 El kale es uno de los vegetales con mayor densidad nutricional del mundo. Agrega vitamina K, C y calcio. Si no conseguís, podés sustituir con acelga o espinaca."
+    },
+    {
+      name: "Salmón con Ensalada de Quinoa",
+      emoji: "🐟",
+      tags: ["Omega-3", "Proteína completa", "IG bajo"],
+      desc: "Filet de salmón a la plancha sobre cama de quinoa con pepino, menta y aderezo de yogur.",
+      kcal: "460", prot: "38g", carb: "36g", grasa: "18g",
+      ing: ["150g salmón fresco","½ taza quinoa cocida","½ pepino","Hojas de menta","100g yogur griego","Jugo de ½ limón","1 cda aceite de oliva","Sal, pimienta y eneldo"],
+      steps: [
+        "Cocinar la quinoa en agua (1:2) por 15 minutos.",
+        "Condimentar el salmón con sal, pimienta y eneldo.",
+        "Cocinar el salmón en sartén con aceite 3-4 min por lado.",
+        "Mezclar quinoa fría con pepino en cubos y menta.",
+        "Preparar aderezo con yogur, limón y sal.",
+        "Servir el salmón sobre la quinoa y salpicar el aderezo.",
+      ],
+      tip: "🐟 El salmón es la fuente más potente de omega-3 EPA/DHA, que mejoran la sensibilidad a la insulina y reducen la inflamación. Recomendado mínimo 2 veces por semana."
+    },
+  ],
+  cenas: [
+    {
+      name: "Tortilla de Espinaca y Ricota",
+      emoji: "🍳",
+      tags: ["Liviana", "Calcio", "Sin gluten"],
+      desc: "Tortilla al horno baja en carbos con espinaca, ricota descremada y hierbas frescas.",
+      kcal: "310", prot: "24g", carb: "8g", grasa: "20g",
+      ing: ["3 huevos","100g ricota descremada","1 taza espinaca cocida","¼ cebolla picada fina","Sal, pimienta y nuez moscada","1 cdita aceite de oliva","Tomillo fresco"],
+      steps: [
+        "Escurrir bien la espinaca cocida y picarla.",
+        "Batir los huevos con sal, pimienta y nuez moscada.",
+        "Mezclar con la ricota, espinaca y cebolla.",
+        "Volcar en sartén antiadherente con aceite.",
+        "Cocinar a fuego bajo con tapa 8 minutos.",
+        "Gratinar en el horno 5 minutos (opcional).",
+      ],
+      tip: "🌙 Las cenas sin almidones ayudan a que la glucosa de ayuno del día siguiente sea más baja. Los huevos + ricota dan proteínas sin picos glucémicos."
+    },
+    {
+      name: "Crema de Zucchini y Jengibre",
+      emoji: "🥒",
+      tags: ["Muy liviana", "Anti-inflamatorio", "Vegana"],
+      desc: "Sopa crema ligera con zucchini, jengibre fresco y coco. Digestiva y perfecta para la noche.",
+      kcal: "220", prot: "6g", carb: "22g", grasa: "12g",
+      ing: ["3 zucchinis grandes","1 cebolla","2 cm jengibre fresco","2 tazas caldo de verduras","200ml leche de coco light","1 cda aceite de coco","Sal, pimienta y cilantro"],
+      steps: [
+        "Sofreír cebolla en aceite de coco hasta transparentar.",
+        "Agregar zucchini cortado y jengibre rallado.",
+        "Cocinar 5 minutos revolviendo.",
+        "Agregar caldo y cocinar 15 minutos.",
+        "Procesar con mixeur hasta obtener crema.",
+        "Agregar leche de coco, calentar y salpimentar.",
+        "Servir con cilantro fresco y pimienta negra.",
+      ],
+      tip: "🫚 El jengibre tiene gingeroles, compuestos que mejoran la sensibilidad a la glucosa y reducen la inflamación. También ayuda a la digestión nocturna."
+    },
+    {
+      name: "Pescado al Vapor con Vegetales",
+      emoji: "🐠",
+      tags: ["Muy bajo en calorías", "Omega-3", "Digestivo"],
+      desc: "Merluza al vapor con brócoli, zanahoria y salsa de soja baja en sodio. La cena más liviana.",
+      kcal: "270", prot: "32g", carb: "14g", grasa: "8g",
+      ing: ["200g merluza o tilapia","1 taza brócoli","1 zanahoria en bastones","1 cda salsa de soja reducida en sodio","Jugo de ½ limón","Jengibre rallado","Aceite de sésamo","Semillas de sésamo"],
+      steps: [
+        "Preparar la vaporera o una olla con agua y rejilla.",
+        "Marinar el pescado con salsa de soja, limón y jengibre.",
+        "Colocar los vegetales en la vaporera primero (5 min).",
+        "Agregar el pescado y cocinar 8-10 minutos.",
+        "El pescado debe separarse fácilmente con tenedor.",
+        "Servir con aceite de sésamo y semillas por encima.",
+      ],
+      tip: "🌊 Cocinar al vapor preserva hasta el 90% de los nutrientes vs. hervido. Es la técnica más recomendada para quienes cuidan la glucosa y el peso."
+    },
+  ],
+  snacks: [
+    {
+      name: "Manzana Verde con Mantequilla de Almendras",
+      emoji: "🍏",
+      tags: ["IG bajo", "Fibra", "Saciante"],
+      desc: "La combinación perfecta: fibra de la manzana + grasa buena de las almendras estabiliza la glucosa.",
+      kcal: "210", prot: "5g", carb: "25g", grasa: "11g",
+      ing: ["1 manzana verde mediana","1.5 cdas mantequilla de almendras sin azúcar","Canela opciona"],
+      steps: [
+        "Lavar la manzana y cortarla en gajos.",
+        "Servir con la mantequilla de almendras al costado.",
+        "Espolvorear canela si se desea.",
+      ],
+      tip: "⏰ Este snack es ideal entre almuerzo y cena. La grasa de las almendras enlentece la digestión del azúcar de la manzana, previniendo picos glucémicos."
+    },
+    {
+      name: "Hummus con Palitos de Verdura",
+      emoji: "🥕",
+      tags: ["Proteína vegetal", "Fibra", "Sin gluten"],
+      desc: "Hummus casero con zanahorias, apio y pepino. Nutritivo, proteico y anti-inflamatorio.",
+      kcal: "240", prot: "9g", carb: "28g", grasa: "10g",
+      ing: ["1 taza garbanzos cocidos","2 cdas tahini","Jugo de 1 limón","1 diente ajo","2 cdas aceite de oliva","Sal y comino","Zanahoria, apio, pepino"],
+      steps: [
+        "Procesar los garbanzos con tahini, limón, ajo y sal.",
+        "Agregar aceite de oliva mientras se procesa.",
+        "Ajustar consistencia con agua fría.",
+        "Cortar los vegetales en bastones.",
+        "Servir el hummus con aceite extra y pimentón.",
+      ],
+      tip: "🫘 Hacer el hummus en casa te permite controlar exactamente qué lleva. El tahini aporta calcio y grasas saludables que lo hacen más estabilizador."
+    },
+    {
+      name: "Puñado de Frutos Secos Mixtos",
+      emoji: "🥜",
+      tags: ["Grasas buenas", "Magnesio", "Vitamina E"],
+      desc: "Mix de nueces, almendras y pistachos sin sal. Snack perfecto y rápido para el medio día.",
+      kcal: "180", prot: "6g", carb: "7g", grasa: "15g",
+      ing: ["8 nueces","10 almendras","10 pistachos","Opcional: 3 nueces de Brasil"],
+      steps: [
+        "Medir la porción (no exceder 30g).",
+        "Consumir lentamente, masticando bien.",
+        "Acompañar con agua o infusión sin azúcar.",
+      ],
+      tip: "💎 Las nueces tienen el mejor perfil de omega-3 entre los frutos secos. El magnesio de las almendras mejora la sensibilidad a la insulina. Nunca tostados con sal ni azucarados."
+    },
+  ]
+};
+
+const weekPlan = [
+  { day: "Lunes", meals: [
+    { time: "Desayuno", name: "Bowl de Avena con Frutos Rojos" },
+    { time: "Almuerzo", name: "Pollo al Horno con Vegetales" },
+    { time: "Merienda", name: "Manzana Verde con Mantequilla de Almendras" },
+    { time: "Cena", name: "Crema de Zucchini y Jengibre" },
+  ]},
+  { day: "Martes", meals: [
+    { time: "Desayuno", name: "Huevos Revueltos con Espinaca" },
+    { time: "Almuerzo", name: "Ensalada de Lentejas Mediterránea" },
+    { time: "Merienda", name: "Hummus con Palitos de Verdura" },
+    { time: "Cena", name: "Tortilla de Espinaca y Ricota" },
+  ]},
+  { day: "Miércoles", meals: [
+    { time: "Desayuno", name: "Yogur Griego con Semillas y Manzana" },
+    { time: "Almuerzo", name: "Salmón con Ensalada de Quinoa" },
+    { time: "Merienda", name: "Puñado de Frutos Secos Mixtos" },
+    { time: "Cena", name: "Pescado al Vapor con Vegetales" },
+  ]},
+  { day: "Jueves", meals: [
+    { time: "Desayuno", name: "Bowl de Avena con Frutos Rojos" },
+    { time: "Almuerzo", name: "Sopa de Verduras con Garbanzos" },
+    { time: "Merienda", name: "Manzana Verde con Mantequilla de Almendras" },
+    { time: "Cena", name: "Crema de Zucchini y Jengibre" },
+  ]},
+  { day: "Viernes", meals: [
+    { time: "Desayuno", name: "Huevos Revueltos con Espinaca" },
+    { time: "Almuerzo", name: "Pollo al Horno con Vegetales" },
+    { time: "Merienda", name: "Hummus con Palitos de Verdura" },
+    { time: "Cena", name: "Tortilla de Espinaca y Ricota" },
+  ]},
+  { day: "Sábado", meals: [
+    { time: "Desayuno", name: "Yogur Griego con Semillas y Manzana" },
+    { time: "Almuerzo", name: "Salmón con Ensalada de Quinoa" },
+    { time: "Merienda", name: "Puñado de Frutos Secos Mixtos" },
+    { time: "Cena", name: "Pescado al Vapor con Vegetales" },
+  ]},
+  { day: "Domingo", meals: [
+    { time: "Desayuno", name: "Bowl de Avena con Frutos Rojos" },
+    { time: "Almuerzo", name: "Ensalada de Lentejas Mediterránea" },
+    { time: "Merienda", name: "Manzana Verde con Mantequilla de Almendras" },
+    { time: "Cena", name: "Crema de Zucchini y Jengibre" },
+  ]},
+];
+
+const guideData = [
+  {
+    title: "✅ Verduras IG muy bajo", items: [
+      ["Espinaca, kale, acelga", "libre"],
+      ["Brócoli, coliflor", "libre"],
+      ["Zucchini, pepino", "libre"],
+      ["Apio, hinojo, espárragos", "libre"],
+      ["Tomate, pimiento", "libre"],
+    ], type: "good"
+  },
+  {
+    title: "✅ Proteínas recomendadas", items: [
+      ["Pollo y pavo (sin piel)", "libre"],
+      ["Huevos enteros", "libre"],
+      ["Pescado y mariscos", "libre"],
+      ["Legumbres (lentejas)", "raciones"],
+      ["Yogur griego natural", "libre"],
+    ], type: "good"
+  },
+  {
+    title: "✅ Grasas buenas", items: [
+      ["Aceite de oliva virgen extra", "libre"],
+      ["Palta / aguacate", "1/2 por día"],
+      ["Nueces y almendras", "30g/día"],
+      ["Salmón, sardinas, caballa", "3x semana"],
+      ["Semillas (chía, lino)", "1-2 cdas"],
+    ], type: "good"
+  },
+  {
+    title: "⚠️ Consumir con moderación", items: [
+      ["Arroz integral", "1/2 taza"],
+      ["Batata / camote", "pequeña"],
+      ["Pan integral 100%", "1 rebanada"],
+      ["Fruta entera (no jugo)", "2/día"],
+      ["Quesos duros", "30g/día"],
+    ], type: "mod"
+  },
+  {
+    title: "❌ Evitar o eliminar", items: [
+      ["Azúcar blanco y moreno", "evitar"],
+      ["Pan blanco, facturas", "evitar"],
+      ["Arroz blanco, fideos blancos", "evitar"],
+      ["Jugos de fruta y gaseosas", "evitar"],
+      ["Productos ultraprocesados", "evitar"],
+    ], type: "avoid"
+  },
+  {
+    title: "🌿 Especias que regulan glucosa", items: [
+      ["Canela (½ cdita/día)", "incluir"],
+      ["Cúrcuma + pimienta negra", "incluir"],
+      ["Jengibre fresco o seco", "incluir"],
+      ["Ajo (crudo es mejor)", "incluir"],
+      ["Vinagre de manzana", "1 cda c/comida"],
+    ], type: "good"
+  },
+];
+
+const tipsData = [
+  { icon: "🍽️", title: "Orden de los alimentos", text: "Empezá cada comida con la verdura, luego la proteína y por último los carbohidratos. Este orden reduce el pico glucémico hasta un 73% según estudios recientes." },
+  { icon: "🚶", title: "Caminata post-comida", text: "Una caminata de 10-15 minutos después de comer reduce el pico de glucosa entre un 25-40%. Los músculos activos consumen glucosa sin necesitar insulina." },
+  { icon: "💧", title: "Hidratación constante", text: "Tomar 2 vasos de agua antes de cada comida mejora la sensibilidad a la insulina y reduce la ingesta calórica. Evitá bebidas con azúcar o edulcorantes artificiales." },
+  { icon: "🍎", title: "Vinagre de manzana", text: "1 cucharada de vinagre de manzana en un vaso de agua antes de comer reduce el IG de la comida hasta un 30%. Activá la digestión y mejorá la respuesta glucémica." },
+  { icon: "😴", title: "El sueño afecta la glucosa", text: "Dormir menos de 7 horas aumenta la resistencia a la insulina hasta un 25%. El sueño es tan importante como la dieta para controlar el azúcar." },
+  { icon: "🕐", title: "Intervalos entre comidas", text: "Dejá al menos 4 horas entre comidas para que la insulina baje completamente. El picoteo constante mantiene la insulina elevada y promueve el almacenamiento de grasa." },
+  { icon: "🥗", title: "Proteína en cada comida", text: "Incluir proteínas en cada ingesta estabiliza la glucosa y aumenta la saciedad. La proteína estimula la secreción de glucagón, la hormona contraria a la insulina." },
+  { icon: "🌿", title: "Canela todos los días", text: "Media cucharadita de canela de Ceylan (no Cassia) al día mejora la sensibilidad a la insulina. Ponela en el desayuno, infusiones o sobre las frutas." },
+];
+
+// Build cards
+function buildCards(containerId, data, mealLabel) {
+  const cont = document.getElementById(containerId);
+  data.forEach((r, i) => {
+    const tagColors = ['tag-green','tag-orange','tag-blue'];
+    const tagsHtml = r.tags.map((t,j) => `<span class="tag ${tagColors[j%3]}">${t}</span>`).join('');
+    cont.innerHTML += `
+      <div class="recipe-card" onclick="openModal('${mealLabel}', ${JSON.stringify(r).replace(/'/g,"&#39;").replace(/"/g,'&quot;')})">
+        <div class="card-header" data-emoji="${r.emoji}">
+          <div class="card-meal">${mealLabel}</div>
+          <div class="card-name">${r.name}</div>
+        </div>
+        <div class="card-body">
+          <div class="card-tags">${tagsHtml}</div>
+          <div class="card-desc">${r.desc}</div>
+          <div class="card-macros">
+            <div class="macro"><span class="macro-val">${r.kcal}</span><span class="macro-key">Kcal</span></div>
+            <div class="macro"><span class="macro-val">${r.prot}</span><span class="macro-key">Proteína</span></div>
+            <div class="macro"><span class="macro-val">${r.carb}</span><span class="macro-key">Carbos</span></div>
+            <div class="macro"><span class="macro-val">${r.grasa}</span><span class="macro-key">Grasas</span></div>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+
+buildCards('grid-desayunos', recipes.desayunos, 'Desayuno');
+buildCards('grid-almuerzos', recipes.almuerzos, 'Almuerzo');
+buildCards('grid-cenas', recipes.cenas, 'Cena');
+buildCards('grid-snacks', recipes.snacks, 'Snack');
+
+// Week plan
+const wg = document.getElementById('week-grid');
+weekPlan.forEach(d => {
+  wg.innerHTML += `
+    <div class="day-card">
+      <div class="day-header">${d.day}</div>
+      <div class="day-meals">
+        ${d.meals.map(m => `
+          <div class="day-meal">
+            <span class="meal-time">${m.time}</span>
+            <span class="meal-name">${m.name}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+});
+
+// Guide
+const gg = document.getElementById('guide-grid');
+guideData.forEach(g => {
+  const badgeClass = g.type === 'good' ? 'badge-good' : g.type === 'avoid' ? 'badge-avoid' : 'badge-mod';
+  const badgeText = g.type === 'good' ? '✓' : g.type === 'avoid' ? '✗' : '◐';
+  gg.innerHTML += `
+    <div class="guide-card">
+      <h3>${g.title}</h3>
+      <ul>
+        ${g.items.map(([food, badge]) => `
+          <li>${food} <span class="${badgeClass}">${badge}</span></li>
+        `).join('')}
+      </ul>
+    </div>
+  `;
+});
+
+// Tips
+const tg = document.getElementById('tips-grid');
+tipsData.forEach(t => {
+  tg.innerHTML += `
+    <div class="tip-card">
+      <h3>${t.icon} ${t.title}</h3>
+      <p>${t.text}</p>
+    </div>
+  `;
+});
+
+// Nav
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.pill').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// Modal
+function openModal(meal, r) {
+  if (typeof r === 'string') r = JSON.parse(r.replace(/&quot;/g,'"').replace(/&#39;/g,"'"));
+  document.getElementById('m-meal').textContent = meal;
+  document.getElementById('m-title').textContent = r.name;
+  document.getElementById('m-ing').innerHTML = r.ing.map(i => `<li>${i}</li>`).join('');
+  document.getElementById('m-steps').innerHTML = r.steps.map(s => `
+    <li class="step">
+      <div class="step-num">${r.steps.indexOf(s)+1}</div>
+      <div class="step-text">${s}</div>
+    </li>
+  `).join('');
+  document.getElementById('m-tip').innerHTML = r.tip;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal(e) {
+  if (e.target === document.getElementById('modal-overlay')) closeModalDirect();
+}
+
+function closeModalDirect() {
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+</script>
+</body>
+</html>
