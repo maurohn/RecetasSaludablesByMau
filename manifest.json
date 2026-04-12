@@ -1,6 +1,6 @@
 {
-  "name": "Recetario Saludable By Mau",
-  "short_name": "Recetas",
+  "name": "RecetasSaludables",
+  "short_name": "RecetasSaludables",
   "description": "Tu generador interactivo de recetas para el control de azúcar y salud.",
   "start_url": "./index.html",
   "display": "standalone",
