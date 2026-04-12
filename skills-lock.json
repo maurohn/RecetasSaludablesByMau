@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "skills": {
+    "chef-assistant": {
+      "source": "lyndonkl/claude",
+      "sourceType": "github",
+      "computedHash": "d737b4b44319d7fbc11d2ba4046acb675462c824b25182fde38344968ef23185"
+    },
+    "javascript-pro": {
+      "source": "jeffallan/claude-skills",
+      "sourceType": "github",
+      "computedHash": "be8d710a5339d1435df48d059cff2a98ab4f13abd65be40ea3e4e03c336fab16"
+    },
+    "modern-frontend-design": {
+      "source": "deveshpunjabi/modern-frontend-skill",
+      "sourceType": "github",
+      "computedHash": "c4fbca92e9f36edbb23bb1bdd7fba1895c6cefedee6f13d73c4e3533ee6be0a2"
+    },
+    "rp-diet": {
+      "source": "borisghidaglia/science-based-lifter",
+      "sourceType": "github",
+      "computedHash": "3f48bfddbff4b2c9d4c11f3413c930042bb591469d123a7a21066c14e1fca833"
+    },
+    "ui-ux-pro-max": {
+      "source": "kimny1143/claude-code-template",
+      "sourceType": "github",
+      "computedHash": "b6f3a46da860714b6b7c733abc81d6ccb71018666ba46f478ebb5f43cefcf361"
+    }
+  }
+}
