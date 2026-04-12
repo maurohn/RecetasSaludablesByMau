@@ -4124,9 +4124,13 @@ function closeModalDirect() {
   // Detección de Android vs iOS
   const userAgent = window.navigator.userAgent.toLowerCase();
   const isIos = /iphone|ipad|ipod/.test(userAgent);
+  const isCriOs = /crios/.test(userAgent);
   
-  // Si es iOS Safari, mostrar alerta PWA
+  // Si es iOS Safari/Chrome, mostrar alerta PWA
   if (isIos && !isStandalone) {
+    if (isCriOs) {
+      iosInstruction.innerHTML = '<p><b>¡Chrome en iPhone detectado! 🚫</b></p><p style="margin-top:6px;">Apple prohíbe instalar Apps desde un navegador que no sea el suyo. Para instalarla, abrí esta web pegando el link directo en tu <b>Safari</b>.</p>';
+    }
     // Retrasar 2.5 segs para que cargue la página antes de asustar al usuario
     setTimeout(() => {
       iosInstruction.style.display = 'block';
