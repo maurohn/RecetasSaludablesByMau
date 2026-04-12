@@ -33,6 +33,12 @@
 
   gtag('config', 'G-E0CMKPQ05Z');
 </script>
+<!-- PWA Enlaces -->
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon.svg">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#6b8f71">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -746,6 +752,21 @@
   letter-spacing: 0.02em;
 }
 /* ─────────────────────────────────────────────────────────────────── */
+
+  /* PWA MODAL */
+  .pwa-modal { position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); z-index: 10000; display: flex; align-items: flex-end; justify-content: center; padding: 20px; transition: opacity 0.3s; opacity: 1; pointer-events: auto; }
+  .pwa-modal.hidden { opacity: 0; pointer-events: none; }
+  .pwa-content { background: var(--card-bg); width: 100%; max-width: 400px; border-radius: 24px; padding: 24px; text-align: center; position: relative; box-shadow: 0 -10px 40px rgba(0,0,0,0.1); transform: translateY(0); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  .pwa-modal.hidden .pwa-content { transform: translateY(100%); }
+  .pwa-icon { width: 70px; height: 70px; margin: 0 auto 16px; border-radius: 16px; box-shadow: 0 4px 12px rgba(107,143,113,0.3); }
+  .pwa-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--sage-dark); font-weight: 700; margin-bottom: 8px; }
+  .pwa-desc { font-size: 0.95rem; color: var(--muted); margin-bottom: 20px; line-height: 1.4; }
+  .pwa-close { position: absolute; top: 12px; right: 12px; background: #f0f0f0; border: none; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text); font-weight: bold; font-family: sans-serif;}
+  .pwa-close:hover { background: #e0e0e0; }
+  .ios-instruction { background: var(--cream); padding: 15px; border-radius: 12px; text-align: left; font-size: 0.9rem; color: var(--text); display: none; }
+  .ios-instruction p { margin-bottom: 6px; }
+  .btn-pwa-install { background: var(--sage); color: white; padding: 14px 20px; border-radius: 30px; border: none; font-weight: 500; font-size: 1rem; cursor: pointer; width: 100%; transition: background 0.3s; box-shadow: 0 4px 15px rgba(107,143,113,0.4); display: none; }
+  .btn-pwa-install:hover { background: var(--sage-dark); }
 </style>
 </head>
 <body>
@@ -876,6 +897,27 @@
 </div>
 
 <!-- MODAL -->
+
+<!-- PWA Install Modal -->
+<div id="pwa-modal" class="pwa-modal hidden">
+  <div class="pwa-content">
+    <button class="pwa-close" onclick="document.getElementById('pwa-modal').classList.add('hidden')">✕</button>
+    <img src="./icon.svg" alt="Recetas App Icon" class="pwa-icon">
+    <h3 class="pwa-title">¡Llevá el Recetario en tu Celular!</h3>
+    <p class="pwa-desc">Instalá la App oficial "Recetas By Mau" para acceso instantáneo, offline y sin ocupar apenas memoria en tu celular.</p>
+    
+    <!-- Para Android -->
+    <button id="btn-install-pwa" class="btn-pwa-install">Instalar App Ahora</button>
+    
+    <!-- Para iOS -->
+    <div id="ios-instruction" class="ios-instruction">
+      <p><b>Para iPhone/iPad:</b></p>
+      <p>1. Toca en el botón central de Safari <b>Compartir</b> <svg width="14" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:bottom; margin: 0 4px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg></p>
+      <p>2. Elegí <b>"Agregar a Inicio"</b> (+)</p>
+    </div>
+  </div>
+</div>
+
 <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
   <div class="modal" id="modal">
     <div class="modal-hero" id="modal-hero">
@@ -4057,6 +4099,71 @@ function closeModalDirect() {
   document.getElementById('modal-overlay').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// ==========================================
+// Módulo PWA: Instalación y Service Worker
+// ==========================================
+(function initPwa() {
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW Registered!', reg.scope))
+        .catch(err => console.error('SW Error:', err));
+    });
+  }
+
+  let deferredPrompt;
+  const pwaModal = document.getElementById('pwa-modal');
+  const btnInstall = document.getElementById('btn-install-pwa');
+  const iosInstruction = document.getElementById('ios-instruction');
+
+  // Verificar si ya está en modo Standalone PWA instalada
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+  if(isStandalone) return; // No mostrar nada si ya esta instalada
+  
+  // Detección de Android vs iOS
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  const isIos = /iphone|ipad|ipod/.test(userAgent);
+  
+  // Si es iOS Safari, mostrar alerta PWA
+  if (isIos && !isStandalone) {
+    // Retrasar 2.5 segs para que cargue la página antes de asustar al usuario
+    setTimeout(() => {
+      iosInstruction.style.display = 'block';
+      pwaModal.classList.remove('hidden');
+    }, 2500);
+  }
+
+  // Interceptar la petición automática de Google Chrome / Edge en Android
+  window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevenir el banner minúsculo original
+    e.preventDefault();
+    deferredPrompt = e;
+    
+    // Mostramos nuestro Modal estilizado
+    btnInstall.style.display = 'inline-block';
+    // Retrasar modal Android
+    setTimeout(() => {
+      pwaModal.classList.remove('hidden');
+    }, 2500);
+  });
+
+  // Action en el botón de Android
+  if(btnInstall) {
+    btnInstall.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        // Disparar promesa oficial
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log('El usuario eligió:', outcome);
+        // Deshabilitar y esconder
+        deferredPrompt = null;
+        pwaModal.classList.add('hidden');
+      }
+    });
+  }
+})();
+
 </script>
 </body>
 </html>

@@ -1,0 +1,17 @@
+{
+  "name": "Recetario Saludable By Mau",
+  "short_name": "Recetas",
+  "description": "Tu generador interactivo de recetas para el control de azúcar y salud.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#2c2c2c",
+  "theme_color": "#6b8f71",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
