@@ -4140,13 +4140,22 @@ function closeModalDirect() {
   const isCriOs = /crios/.test(userAgent);
   const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent);
   
+  // Helper para manejar el Cooldown de 5 días
+  function attemptShowPwaModal() {
+    const lastPromptTime = localStorage.getItem('lastPwaPrompt');
+    if (lastPromptTime) {
+      const daysSince = (Date.now() - parseInt(lastPromptTime)) / (1000 * 60 * 60 * 24);
+      if (daysSince < 5) return; // Menos de 5 días, abortar
+    }
+    pwaModal.classList.remove('hidden');
+    localStorage.setItem('lastPwaPrompt', Date.now().toString());
+  }
+
   // Si es PC de escritorio, mostrar QR
   if (!isMobile && !isStandalone) {
     if (btnInstall) btnInstall.style.display = 'none';
     if (desktopInstruction) desktopInstruction.style.display = 'block';
-    setTimeout(() => {
-      pwaModal.classList.remove('hidden');
-    }, 1500);
+    setTimeout(attemptShowPwaModal, 1500);
   }
 
   // Si es iOS Safari/Chrome, mostrar alerta PWA
@@ -4157,7 +4166,7 @@ function closeModalDirect() {
     // Retrasar 2.5 segs para que cargue la página antes de asustar al usuario
     setTimeout(() => {
       iosInstruction.style.display = 'block';
-      pwaModal.classList.remove('hidden');
+      attemptShowPwaModal();
     }, 2500);
   }
 
@@ -4174,9 +4183,7 @@ function closeModalDirect() {
     // Mostramos nuestro Modal estilizado
     btnInstall.style.display = 'inline-block';
     // Retrasar modal Android
-    setTimeout(() => {
-      pwaModal.classList.remove('hidden');
-    }, 2500);
+    setTimeout(attemptShowPwaModal, 2500);
   });
 
   // Action en el botón de Android
