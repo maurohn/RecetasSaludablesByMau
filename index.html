@@ -12,6 +12,7 @@
 <meta name="keywords" content="recetas saludables, control de glucosa, dieta sin tacc, recetas sin gluten, bajar de peso, diabetes, menú sano semanal, nutrición, almuerzo saludable">
 <meta name="author" content="Recetas Saludables">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://recetassaludables.ar/" />
 
 <!-- Open Graph / Redes Sociales (Para la previsualización de links en WhatsApp/Facebook) -->
 <meta property="og:title" content="Recetario Saludable · Control Glucosa">
@@ -4168,6 +4169,50 @@ function closeModalDirect() {
       }
     });
   }
+})();
+
+// ==========================================
+// Módulo de Indexación Masiva: Schema.org JSON-LD
+// ==========================================
+(function injectMassiveSchema() {
+  try {
+    const allRecipes = [...recipes.desayunos, ...recipes.almuerzos, ...recipes.cenas, ...recipes.snacks];
+
+    const siteSchema = {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Recetas Saludables",
+      "url": "https://recetassaludables.ar/",
+      "description": "Recetario interactivo online con generador semanal y filtros Keto/Sin TACC."
+    };
+
+    const recipeSchemas = allRecipes.map(r => ({
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      "name": r.name,
+      "description": r.desc,
+      "keywords": r.tags.join(', '),
+      "recipeIngredient": r.ing,
+      "recipeInstructions": r.steps.map(s => ({ "@type": "HowToStep", "text": s })),
+      "nutrition": {
+        "@type": "NutritionInformation",
+        "calories": r.kcal + " kcal",
+        "proteinContent": r.prot,
+        "carbohydrateContent": r.carb,
+        "fatContent": r.grasa
+      }
+    }));
+
+    // Insertar WebSite Schema y TODAS las Recetas en una super Array Semántica
+    const compoundSchema = [siteSchema, ...recipeSchemas];
+    
+    // Lo hacemos invisible visualmente pero 100% visible a Google.
+    const scriptTag = document.createElement('script');
+    scriptTag.type = "application/ld+json";
+    scriptTag.text = JSON.stringify(compoundSchema);
+    document.head.appendChild(scriptTag);
+    console.log("🚀 SEO: Inyectados", recipeSchemas.length, "esquemas ricos en el DOM para GoogleBot.");
+  } catch(e) {}
 })();
 
 </script>

@@ -21,6 +21,16 @@
       "sourceType": "github",
       "computedHash": "3f48bfddbff4b2c9d4c11f3413c930042bb591469d123a7a21066c14e1fca833"
     },
+    "schema-markup": {
+      "source": "coreyhaines31/marketingskills",
+      "sourceType": "github",
+      "computedHash": "7e94629c1bafd6459b4f113237655a98761438eb1b26aa15c440351f79a86d2e"
+    },
+    "seo": {
+      "source": "addyosmani/web-quality-skills",
+      "sourceType": "github",
+      "computedHash": "680cc12a17e9308b4592a2751db51615c618993f75362cb8e64207f6355a8c63"
+    },
     "ui-ux-pro-max": {
       "source": "kimny1143/claude-code-template",
       "sourceType": "github",
