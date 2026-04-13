@@ -38,7 +38,9 @@
 </script>
 <!-- PWA Enlaces -->
 <link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
 <link rel="apple-touch-icon" href="./icon.svg">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#6b8f71">
@@ -917,6 +919,13 @@
       <p><b>Para iPhone/iPad:</b></p>
       <p>1. Toca en el botón central de Safari <b>Compartir</b> <svg width="14" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:bottom; margin: 0 4px;"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg></p>
       <p>2. Elegí <b>"Agregar a Inicio"</b> (+)</p>
+    </div>
+
+    <!-- Para Desktop (QR) -->
+    <div id="desktop-instruction" class="ios-instruction" style="text-align: center; display: none;">
+      <p><b>¡Escaneá este QR con tu Celular!</b></p>
+      <p style="margin-bottom: 12px; font-size: 0.85rem;">Instalá la App en tu móvil y llevala siempre con vos.</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://recetassaludables.ar/" alt="QR Code" style="border-radius: 8px; width: 140px; height: 140px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(107,143,113,0.3);">
     </div>
   </div>
 </div>
@@ -4119,16 +4128,27 @@ function closeModalDirect() {
   const pwaModal = document.getElementById('pwa-modal');
   const btnInstall = document.getElementById('btn-install-pwa');
   const iosInstruction = document.getElementById('ios-instruction');
+  const desktopInstruction = document.getElementById('desktop-instruction');
 
   // Verificar si ya está en modo Standalone PWA instalada
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
   if(isStandalone) return; // No mostrar nada si ya esta instalada
   
-  // Detección de Android vs iOS
+  // Detección de Plataforma
   const userAgent = window.navigator.userAgent.toLowerCase();
   const isIos = /iphone|ipad|ipod/.test(userAgent);
   const isCriOs = /crios/.test(userAgent);
+  const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(userAgent);
   
+  // Si es PC de escritorio, mostrar QR
+  if (!isMobile && !isStandalone) {
+    if (btnInstall) btnInstall.style.display = 'none';
+    if (desktopInstruction) desktopInstruction.style.display = 'block';
+    setTimeout(() => {
+      pwaModal.classList.remove('hidden');
+    }, 1500);
+  }
+
   // Si es iOS Safari/Chrome, mostrar alerta PWA
   if (isIos && !isStandalone) {
     if (isCriOs) {
@@ -4145,6 +4165,10 @@ function closeModalDirect() {
   window.addEventListener('beforeinstallprompt', (e) => {
     // Prevenir el banner minúsculo original
     e.preventDefault();
+    
+    // Solo ofrecer en dispositivos móviles
+    if (!/android|mobile/i.test(userAgent)) return;
+
     deferredPrompt = e;
     
     // Mostramos nuestro Modal estilizado
